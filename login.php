@@ -16,7 +16,7 @@
             <h1>Accedi al tuo Charme</h1>
         </div>
         <div>
-        <form action="match.php" method="post">
+        <form action="funzioni.php" method="post">
             <label for="emails">Inserisci la tua email:</label>
             <input type="email" name="email" id="emails" required>
             <br>
