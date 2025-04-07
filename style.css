@@ -1,0 +1,7 @@
+/*PAGINA CLICCAMI*/
+.message {
+    display: none; /* Nasconde il messaggio inizialmente */
+    color: black;
+    font-size: 16px;
+    margin-top: 10px;
+}
