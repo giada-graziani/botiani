@@ -13,33 +13,53 @@
     ?>
     <div>
         <div>
+            <!--GIADA-->
             <h1>Completa la tua descrizione</h1>
         </div>
         <div>
         <form action="interessi.php" method="post">
             <label for="coloriOcchi">Colore degli occhi: </label>
-                <input list="occhio" name="coloriOcchi" required>
-                <datalist id="occhio">
-                    <option value="Marroni">
-                    <option value="Grigi">
-                    <option value="Verdi">
-                    <option value="Neri">
-                    <option value="Blu">
-                    <option value="Azzurri">
-                </datalist>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="coloriOcchi">
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option1O" autocomplete="off" checked>
+                <label class="btn btn-danger" for="option1O">Marroni</label>
+
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option2O" autocomplete="off">
+                <label class="btn btn-danger" for="option2O">Grigi</label>
+
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option3O" autocomplete="off">
+                <label class="btn btn-danger" for="option3O">Verdi</label>
+
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option4O" autocomplete="off">
+                <label class="btn btn-danger" for="option4O">Neri</label>
+
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option5O" autocomplete="off">
+                <label class="btn btn-danger" for="option5O">Blu</label>
+
+                <input type="radio" class="btn-check" name="optionsOcchi" id="option6O" autocomplete="off">
+                <label class="btn btn-danger" for="option6O">Azzurri</label>
+            </div>
             <br>
             <br>
             <label for="coloriCapelli">Colore dei capelli: </label>
-                <input list="capello" name="coloriCapelli" required>
-                <datalist id="capello">
-                    <option value="Castani">
-                    <option value="Biondi">
-                    <option value="Mori">
-                    <option value="Grigi">
-                    <option value="Nero">
-                    <option value="Rossi">
-                    <option value="Altro">
-                </datalist>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="coloriCapelli">
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option1C" autocomplete="off" checked>
+                <label class="btn btn-danger" for="option1C">Castani</label>
+
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option2C" autocomplete="off">
+                <label class="btn btn-danger" for="option2C">Mori</label>
+
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option3C" autocomplete="off">
+                <label class="btn btn-danger" for="option3C">Biondi</label>
+
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option4C" autocomplete="off">
+                <label class="btn btn-danger" for="option4C">Rossi</label>
+
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option5C" autocomplete="off">
+                <label class="btn btn-danger" for="option5C">Neri</label>
+
+                <input type="radio" class="btn-check" name="optionsCapelli" id="option6C" autocomplete="off">
+                <label class="btn btn-danger" for="option6C">Altro</label>
+            </div>
             <br>
             <br>
             <label for="altezze">Qual'e la tua altezza?(in centimetri): </label>
@@ -47,15 +67,25 @@
             <br>
             <br>
             <label for="stili">Quale stile ti rappresenta di più? : </label>
-                <input list="stile" name="stili" required>
-                <datalist id="stile">
-                    <option value="Baggy">
-                    <option value="Casual">
-                    <option value="Elegante">
-                    <option value="Streetwear">
-                    <option value="Goth">
-                    <option value="Sportivo">
-                </datalist>       
+            <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="stili">
+                <input type="radio" class="btn-check" name="optionStili" id="option1S" autocomplete="off" checked>
+                <label class="btn btn-danger" for="option1S">Baggy</label>
+
+                <input type="radio" class="btn-check" name="optionStili" id="option2S" autocomplete="off">
+                <label class="btn btn-danger" for="option2S">Casual</label>
+
+                <input type="radio" class="btn-check" name="optionStili" id="option3S" autocomplete="off">
+                <label class="btn btn-danger" for="option3S">Elegante</label>
+
+                <input type="radio" class="btn-check" name="optionStili" id="option4S" autocomplete="off">
+                <label class="btn btn-danger" for="option4S">Streetwear</label>
+
+                <input type="radio" class="btn-check" name="optionStili" id="option5S" autocomplete="off">
+                <label class="btn btn-danger" for="option5S">Goth</label>
+
+                <input type="radio" class="btn-check" name="optionStili" id="option6S" autocomplete="off">
+                <label class="btn btn-danger" for="option6S">Sportivo</label>
+            </div>       
         </div>
         <div>
             <input type="submit" value="Continua">

@@ -10,13 +10,50 @@
 <body>
     <div>
         <div>
+            <!--GIADA-->
             <h1>Benvenuto in Charme</h1>
         </div>
         <div>
             <h5>Il sito di incontri pensata per chi cerca più di un semplice match:<br>un’esperienza sofisticata, autentica e coinvolgente</h5>
         </div>
         <div>
-            <a href="login.php"><button>Login</button></a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Login</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="funzioni.php" method="post">
+                        <div class="mb-3">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="email" id="emails" required>
+                                <label for="emails">Email address</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                        <div class="form-floating">
+                                <input type="password" class="form-control" name="password" id="pws" required>
+                                <label for="pws">Password</label>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    
+                    <input type="submit" value="Accedi">
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
             <a href="cliccami.php"><p>non sei ancora registrato?Cliccami!</p></a>
             
         </div>

@@ -14,6 +14,7 @@
     ?>
     <div>
         <div>
+            <!--GIADA-->
             <h1>Forma il tuo profilo</h1>
         </div>
         <div>
@@ -39,7 +40,7 @@
             <br>
             <br>
             <label for="telefoni">Dacci il tuo numero di telefono :</label>
-            <input type="tel" id="telefono" name="telefoni" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+            <input type="tel" id="telefono" name="telefoni" required>
             <br>
             <br>
             <label for="sessi">Qual è il tuo genere? :</label>

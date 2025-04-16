@@ -1,5 +1,6 @@
 <?php
 include('conn.php');
+echo"";
 $q="SELECT 
         *
 FROM
@@ -15,7 +16,7 @@ else{
     ?>
     <script>
         alert("Credenziali errate. Riprova.");
-        window.location.href = "login.php";
+        window.location.href = "index.php";
     </script>
 <?php
     

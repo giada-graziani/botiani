@@ -13,12 +13,18 @@
     ?>
     <div>
         <div>
+            <!--GIADA-->
+            <!--NON SERVE PIù-->
             <h1>Accedi al tuo Charme</h1>
         </div>
         <div>
         <form action="funzioni.php" method="post">
-            <label for="emails">Inserisci la tua email:</label>
-            <input type="email" name="email" id="emails" required>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com">
+                <label for="floatingInputGrid">Email address</label>
+            </div>
+
+            
             <br>
             <label for="pwd">Inserisci la tua password:</label>
             <input type="password" name="password" id="pwd" required>
