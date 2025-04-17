@@ -1,6 +1,6 @@
 <?php
 include('conn.php');
-echo"";
+//NON SERVE PIù
 $q="SELECT 
         *
 FROM
