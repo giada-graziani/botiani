@@ -7,60 +7,238 @@
 }
 
 /*PAGINA MATCH*/
-.card-container {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    margin: auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.card {
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.header h3 {
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.carta-container {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    max-width: 90vw;
+    perspective: 1000px;
+}
+
+.carta {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     background-color: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
+    cursor: grab;
+    transition: transform 0.1s;
+    user-select: none;
+}
+
+.carta.active {
+    z-index: 10;
+}
+
+.carta img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+}
+
+.carta-info {
+    padding: 15px;
+}
+
+.carta-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.carta-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.bottoni{
+    display: flex;
+    justify-content: space-around;
+    width: 250px;
+    margin-top: 30px;
+}
+
+.bottone {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bottone:hover {
+    transform: scale(1.1);
+}
+
+.dislike {
+    background-color: #ff4757;
+    color: white;
+}
+
+.like {
+    background-color: #2ed573;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.like-overlay {
+    background-color: rgba(46, 213, 115, 0.5);
+    border-radius: 15px;
+}
+
+.dislike-overlay {
+    background-color: rgba(255, 71, 87, 0.5);
+    border-radius: 15px;
+}
+
+.popUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease-out;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
 }
-.profile-picture-container {
-    width: 150px; /* Dimensione del contenitore */
-    height: 150px; /* Dimensione del contenitore */
-    border-radius: 50%; /* Rende il contenitore rotondo */
-    overflow: hidden; /* Nasconde le parti dell'immagine che escono dal contenitore */
-    border: 2px solid #ccc; /* Bordo del contenitore */
+
+.popUp.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popUp h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profili {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative; /* Per posizionare l'input file e l'icona */
+    margin-bottom: 30px;
 }
 
-.profile-picture {
-    width: 100%; /* L'immagine riempie il contenitore */
-    height: 100%; /* L'immagine riempie il contenitore */
-    object-fit: cover; /* Mantiene le proporzioni dell'immagine */
-    border-radius: 50%; /* Rende l'immagine rotonda */
-    display: block; /* Assicura che l'immagine sia un blocco */
+.profilo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    overflow: hidden;
+    margin: 0 10px;
 }
 
-input[type="file"] {
-    position: absolute; /* Posiziona l'input sopra l'immagine */
+.profilo img {
     width: 100%;
     height: 100%;
-    opacity: 0; /* Rende invisibile l'input */
-    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+    object-fit: cover;
 }
 
-.add-icon {
-    position: absolute; /* Posiziona l'icona sopra il cerchio */
-    font-size: 50px; /* Dimensione del simbolo "+" */
-    color: #ccc; /* Colore del simbolo "+" */
-    top: 50%; /* Posiziona verticalmente al centro */
-    left: 50%; /* Posiziona orizzontalmente al centro */
-    transform: translate(-50%, -50%); /* Centra esattamente l'icona */
-    pointer-events: none; /* Rende l'icona non cliccabile */
+.match-button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.match-button:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
+}
+
+.fineCarte{
+    display: none;
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+}
+
+.fineCarte h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.fineCarte button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.fineCarte button:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
 }

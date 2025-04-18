@@ -45,62 +45,68 @@
                 $targetFile = $targetDir . basename($file);
                 $uploadOk = 1;
                 $idU=1;
+                $caricato = false;
 
                 // Controlla se il file è un'immagine (opzionale)
                 $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                 if (isset($_POST["carica"])) {
                     echo"uuuuuuuuuuuuuuuuuuuuuuuuuuuu";
-                    $check = getimagesize($_FILES['image']['tmp_name']);
-                    if (empty($check) || $check === false) {
-                        echo"yyyyyyyyyyyyyyyyyyyyy";
-                       echo "Il file non è un'immagine.";
-                        $uploadOk = 0;
-                    } 
-                    else {
-                    echo"oooooooooooooooooooooooooooooooooo";
-                         $uploadOk = 1;
-                         // Controlla se il file esiste già
-                    if (file_exists($targetFile) OR $check["mime"]!="image/jpeg") {
-                        echo "Spiacente, il file esiste già.";
-                        $uploadOk = 0;
-                    }
-
-                    // Controlla la dimensione del file (opzionale)
-                    if ($_FILES['image']['size'] > 500000) { // Limite di 500KB
-                        echo "Spiacente, il file è troppo grande.";
-                        $uploadOk = 0;
-                    }
-
-                    // Consenti solo determinati formati di file (opzionale)
-                    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                        echo "Spiacente, solo file JPG, JPEG, PNG e GIF sono consentiti.";
-                        $uploadOk = 0;
-                    }
-                    echo"nnnnnnnnnnnnnnnnnnnnnnn";
-                    // Controlla se $uploadOk è impostato su 0 a causa di un errore
-                    if ($uploadOk != 0 ) {
-                        echo"qqqqqqqqqqqqqqqqq";
-                        $q = "INSERT INTO
-                                foto
-                                (id_utenti, foto)
-                            VALUES
-                                ('$idU', '$file')";
-                        echo"rrrrrrrrrrrrrrrrrrrrrr";
-                        $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
-                        if($ris){ 
-                            // Se tutto è a posto, prova a caricare il file
-                            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                                echo "Il file è stato caricato.";
-                            } else {
-                                echo "Spiacente, si è verificato un errore durante il caricamento del tuo file.";
+                    if(!empty($_FILES['image']['tmp_name'])){
+                        $check = getimagesize($_FILES['image']['tmp_name']);
+                        if ($check === false) {
+                            echo"yyyyyyyyyyyyyyyyyyyyy";
+                           echo "Il file non è un'immagine.";
+                            $uploadOk = 0;
+                        } 
+                        else {
+                        echo"oooooooooooooooooooooooooooooooooo";
+                             $uploadOk = 1;
+                             // Controlla se il file esiste già
+                        if (file_exists($targetFile) OR $check["mime"]!="image/jpeg") {
+                            echo "Spiacente, il file esiste già.";
+                            $uploadOk = 0;
+                        }
+    
+                        // Controlla la dimensione del file (opzionale)
+                        if ($_FILES['image']['size'] > 500000) { // Limite di 500KB
+                            echo "Spiacente, il file è troppo grande.";
+                            $uploadOk = 0;
+                        }
+    
+                        // Consenti solo determinati formati di file (opzionale)
+                        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                            echo "Spiacente, solo file JPG, JPEG, PNG e GIF sono consentiti.";
+                            $uploadOk = 0;
+                        }
+                        echo"nnnnnnnnnnnnnnnnnnnnnnn";
+                        // Controlla se $uploadOk è impostato su 0 a causa di un errore
+                        if ($uploadOk != 0 ) {
+                            echo"qqqqqqqqqqqqqqqqq";
+                            $q = "INSERT INTO
+                                    foto
+                                    (id_utenti, foto)
+                                VALUES
+                                    ('$idU', '$file')";
+                            echo"rrrrrrrrrrrrrrrrrrrrrr";
+                            $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+                            if($ris){ 
+                                // Se tutto è a posto, prova a caricare il file
+                                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                                    echo "Il file è stato caricato.";
+                                    $caricato = true;
+                                } else {
+                                    echo "Spiacente, si è verificato un errore durante il caricamento del tuo file.";
+                                }
+                            }
+                            else{
+                                echo "Non è stato inserito nel db correttamente";
                             }
                         }
-                        else{
-                            echo "Non è stato inserito nel db correttamente";
-                        }
+                            }
                     }
-                        }
-                    }
+                    
+                }
+                echo "<span class='d-none' id='id_carica'>$caricato</span>";
 
                 
             }
@@ -222,14 +228,15 @@ $(document).ready(function(){//quando la pagina è pronta
         const capelli= document.querySelector("[name='optionsCapelli']:checked").value;
         const altezza= document.getElementById("altezze").value;
         const stile= document.querySelector("[name='optionsStili']:checked").value;
-        
+        const carica= document.getElementById("id_carica").textContent;
+        console.log(carica);
 
         console.log(occhi);
         console.log(capelli);
         console.log(altezza);
         console.log(stile);
-
-        if(altezza ){
+    
+        if(altezza && carica) {
             $.ajax(
                 {url: "operazioniData.php",
                 data: "functionname=estetica&occhi="+occhi+"&capelli="+capelli+"&altezza="+altezza+"&stile="+stile+"&idU="+idU,   

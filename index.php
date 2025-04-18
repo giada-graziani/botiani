@@ -81,7 +81,7 @@
                 dataType: "JSON",
                 success: function(result){
                     if(result.esito =='successo'){
-                        window.location("match.php");
+                        window.location.href="match.php";
                     }
                     else{
                         alert("Credenziali errate. Riprova.");
