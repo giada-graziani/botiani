@@ -17,7 +17,7 @@
         session_start();
     ?>
     <div>
-        <div>
+        <div class="header">
             <!--GIADA-->
             <h1>Completa la tua descrizione</h1>
         </div>
@@ -26,7 +26,7 @@
         <!-- <form action="interessi.php" method="post">-->
 
         <!--IMMAGINE -->
-        <div class="profile-picture-container">
+        <div class="fotoContainer">
             <form enctype="multipart/form-data" method="post">
             <input type="file" id="fileInput" accept="image/*" name="image" />
             <img id="preview" src="" alt="Anteprima" class="profile-picture" style="display:none;" />
@@ -205,21 +205,21 @@ $(document).ready(function(){//quando la pagina è pronta
     const idU= 1;
 
     //PREVIEW-----------------------------
-    const file222=document.getElementById('fileInput').value;
     document.getElementById('fileInput').addEventListener('change', function(event) {
-        const file = event.target.files[0];
+    const file = event.target.files[0];
+    if (file) {
         const reader = new FileReader();
         
         reader.onload = function(e) {
             const preview = document.getElementById('preview');
             preview.src = e.target.result;
             preview.style.display = 'block';
+            document.querySelector('.add-icon').style.display = 'none';
         };
         
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
+        reader.readAsDataURL(file);
+    }
+});
 
     //------------------------
     $("#conferma").click(function(){

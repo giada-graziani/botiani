@@ -61,26 +61,67 @@ elseif($nomeFunzione=="login"){
         echo json_encode(array('esito' =>'errore', 'messaggio' =>'not found')); 
     }
 }
-elseif($nomeFunzione=="foto"){
-    echo "1e";
+elseif($nomeFunzione=="prendiProfilo"){
+
     $idU=$_POST["idU"];
-    $foto= $_POST["foto"];
-    echo "2e";
-    $q = "INSERT INTO
-            foto
-            (id_utenti, foto)
-        VALUES
-            ('$idU', '$foto')";
-        echo "3e";
+
+
+    $q ="SELECT 
+                *
+        FROM
+            interessi
+        WHERE 
+            id_utenti='$idU'";
     $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
-    if($ris){ 
-        echo "4.1e";
-        echo json_encode(array('esito' => 'successo')); 
+
+    while($row=mysqli_fetch_array($ris,MYSQLI_ASSOC)){
+        $genere=$row["genere"];
+    }
+    
+    if($genere=="entrambi"){
+        $q="SELECT 
+                *
+            FROM
+                foto f
+            INNER JOIN utenti u
+            ON u.id_utenti=f.id_utenti
+            WHERE u.id_utenti<>'$idU'";
     }
     else{
-        echo "4.2e";
-        echo json_encode(array('esito' => 'errore', 'messaggio' =>'foto non inserita')); 
+        $q="SELECT 
+                *
+            FROM
+                foto f
+            INNER JOIN utenti u
+            ON u.id_utenti=f.id_utenti
+            INNER JOIN qualita q
+            ON q.id_utenti=u.id_utenti
+            WHERE u.sesso='$genere' AND  u.id_utenti<>'$idU'";
     }
+    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+
+    $risultati=array();
+
+    // Popola l'array con i risultati della query
+    while($row= mysqli_fetch_assoc($ris)){
+        $risultati[]= $row;
+    }
+    // Restituisci i risultati come JSON
+    header('Content-Type: application/json');
+    echo json_encode($risultati);
+}
+elseif($nomeFunzione=="cercaFoto"){
+    $idU=$_POST["idU"];
+
+    $q ="SELECT 
+            foto
+        FROM
+            foto
+        WHERE 
+            id_utenti='$idU'";
+    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+
+    echo json_encode($ris);
 }
 
 ?>
