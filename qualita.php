@@ -12,6 +12,10 @@
 <body>
     <div>
         <h1>Mostraci il tuo charme</h1>
+
+<?php
+
+?>
         <form action="hobby.php" method="POST">
             <label for="sport">Che sport fai?</label>
             <input type="text"name="sp" id="sport" required></input>
