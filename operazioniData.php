@@ -54,6 +54,7 @@ elseif($nomeFunzione=="login"){
         WHERE 
             email = '$email' AND password= '$pws'";
     $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+
     if(mysqli_num_rows($ris)>0){
         echo json_encode(array('esito' => 'successo')); 
     }

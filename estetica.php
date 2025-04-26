@@ -16,15 +16,22 @@
         require("conn.php");
         session_start();
 
-        echo"$_SESSION[utente]['email']";
+        $utenteCorrente = end($_SESSION['utente']);
         $q="SELECT 
-                id_utenti
+                *
             FROM 
                 utenti
             WHERE
-                email='$_SESSION[utente][email]'";  
+                email='$utenteCorrente[email]'"; 
+        $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+        
+        while($row= mysqli_fetch_assoc($ris)){
+            $idU=$row['id_utenti'];
+        }
+        echo"<p hidden='hidden' id='idU'>$idU</p>";
+        $_SESSION['idU']=$idU;
     ?>
-    <div>
+    <div class="contenitore">
         <div class="header">
             <!--GIADA-->
             <h1>Completa la tua descrizione</h1>
@@ -49,7 +56,7 @@
                     $file=$_FILES['image']['name'];
                     $targetFile = $targetDir . basename($file);
                     $uploadOk = 1;
-                    $idU=1;
+                    //$idU=1;
                     $caricato = false;
 
                     // Controlla se il file è un'immagine (opzionale)
@@ -206,24 +213,24 @@
 
 <script type=text/javascript>
 $(document).ready(function(){//quando la pagina è pronta 
-    const idU= 1;
+    let idU = document.getElementById('idU').innerText;
 
-    //PREVIEW-----------------------------
+    //PREVIEW---
     document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        
-        reader.onload = function(e) {
-            const preview = document.getElementById('preview');
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-            document.querySelector('.add-icon').style.display = 'none';
-        };
-        
-        reader.readAsDataURL(file);
-    }
-});
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const preview = document.getElementById('preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                document.querySelector('.add-icon').style.display = 'none';
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    });
 
     //------------------------
     $("#conferma").click(function(){

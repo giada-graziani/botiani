@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 </head>
 <body>
-    <div>
+    <div class="contenitore">
         <div class="header">
             <!--GIADA-->
             <h1>Benvenuto in Charme</h1>
@@ -31,7 +31,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- <form action="funzioni.php" method="post">-->
+                    <form method="post" action="cercaId.php">
                         <div class="mb-3">
                             <div class="form-floating">
                                 <input type="email" class="form-control" name="email" id="emails" required>
@@ -48,8 +48,8 @@
                 </div>
                 <div class="modal-footer">
                     <button id="conferma">Accedi</button>
-                    <!--<input type="submit" value="Accedi">
-                    </form>-->
+                    
+                    </form>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
                 </div>
@@ -59,7 +59,7 @@
             
         </div>
     </div>
-    
+
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -70,9 +70,6 @@
         $("#conferma").click(function(){
             const email= document.getElementById("emails").value;
             const pws= document.getElementById("pws").value;
-           
-            console.log(email)
-            console.log(pws);
 
             $.ajax(
                 {url: "operazioniData.php",

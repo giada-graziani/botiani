@@ -11,10 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 </head>
-<body>
+<body class="bodyMatch">
     <?php
         include("conn.php");
         session_start();
+        $idU=$_SESSION['idU'];
+        echo"<p hidden='hidden' id='idU'>$idU</p>";
     ?>
     <div class="header">
         <h1>Ecco i posssibili charm che abbiamo trovato per te!</h1>
@@ -39,7 +41,6 @@
         <div class="profili">
             <div class="profilo" id="fotoProfiloMio">
             <?php
-                $idU=1;
                 $q ="SELECT 
                             *
                         FROM
@@ -69,8 +70,7 @@
     $(document).ready(function(){
     // Dati di esempio per i profili
     let profili=[];
-    const idU=1;
-
+    let idU = document.getElementById('idU').innerText;
     $.ajax({
         url: "operazioniData.php",
         data: {
@@ -88,7 +88,7 @@
                 console.log("Nessun profilo trovato.");
             }
 
-            console.log("dopo"+JSON.stringify(profili));
+            console.log(JSON.stringify(profili));
 
             let indProfiloInit = 0;
                     let contaCarte = 0;

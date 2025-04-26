@@ -96,18 +96,13 @@ if((isset($_POST['nome'])) && (isset($_POST['cognome'])) && (isset($_POST['eta']
         <label for="sport">Che sport fai?</label>
         <input type="text" name="sp" id="sport" size="30" required placeholder="Es:pallavolo,calcio,danza..."></input>
 
-<?php
 
-?>
-        <form action="hobby.php" method="POST">
-            <label for="sport">Che sport fai?</label>
-            <input type="text"name="sp" id="sport" required></input>
-            <br>
-            <br>
+        <br>
+        <br>
         <label for="caratt">Che caratteristica ti si addice di più?</label>
-            <input type="text"name="caratteristica" id="caratt" size="30" required placeholder="Es:simpatico/a,permaloso/a,gentile..."></input>
-            <br>
-            <br>
+        <input type="text"name="caratteristica" id="caratt" size="30" required placeholder="Es:simpatico/a,permaloso/a,gentile..."></input>
+        <br>
+        <br>
 
 <label class="d-inline-flex gap-1" for="ani">
 In quali di questi animali ti identifichi ?

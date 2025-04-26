@@ -16,7 +16,7 @@
             $_SESSION['utente'] = [];
         }
     ?>
-    <div>
+    <div class="contenitore">
         <div  class="header">
             <!--GIADA-->
             <h1>Crea il tuo profilo <span style="font-size: 2rem;">💘</span></h1>
