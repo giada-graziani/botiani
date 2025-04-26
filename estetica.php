@@ -22,8 +22,7 @@
             FROM 
                 utenti
             WHERE
-                email='$_SESSION[utente][email]'";
-        
+                email='$_SESSION[utente][email]'";  
     ?>
     <div>
         <div class="header">

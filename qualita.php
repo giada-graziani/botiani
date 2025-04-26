@@ -11,7 +11,7 @@
 </head>
 <body>
 <style>
-        form {
+form {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 30px;
     border-radius: 15px;
@@ -95,6 +95,13 @@ if((isset($_POST['nome'])) && (isset($_POST['cognome'])) && (isset($_POST['eta']
         <p>racconta un pò di te...</p>
         <label for="sport">Che sport fai?</label>
         <input type="text" name="sp" id="sport" size="30" required placeholder="Es:pallavolo,calcio,danza..."></input>
+
+<?php
+
+?>
+        <form action="hobby.php" method="POST">
+            <label for="sport">Che sport fai?</label>
+            <input type="text"name="sp" id="sport" required></input>
             <br>
             <br>
         <label for="caratt">Che caratteristica ti si addice di più?</label>
