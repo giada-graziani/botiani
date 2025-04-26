@@ -12,6 +12,9 @@
     <?php
         require("conn.php");
         session_start();
+        if (!isset($_SESSION['utente'])) {
+            $_SESSION['utente'] = [];
+        }
     ?>
     <div>
         <div  class="header">
@@ -44,13 +47,12 @@
             <input type="tel" id="telefoni" name="telefono" required>
             <br>
             <br>
-            <label for="sessi">Qual è il tuo genere? :</label>
-            <input list="sex" name="sesso" id="sessi"  required>
-            <datalist id="sex">
-                <option value="donna">
-                <option value="uomo">
-                <option value="altro">
-            </datalist>
+            <label for="sessi">Qual è il tuo sesso? :</label>
+            <select id="sessi" name="sesso" required>
+                <option value="uomo">Uomo</option>
+                <option value="donna">Donna</option>
+                <option value="altro">Altro</option>
+            </select>
             <br>
             <br>
             <label for="emails">Inserisci la tua email:</label>
@@ -66,15 +68,6 @@
             <a href="index.php"><button>Annulla</button></a>
         </div>
     </div>
-    <?php
-    //VEDERE SE FUNZIONA
-    if((isset($_POST['nome'])) && (isset($_POST['cognome'])) && (isset($_POST['eta'])) && (isset($_POST['telefono'])) && (isset($_POST['email'])) && (isset($_POST['password'])) && (isset($_POST['sesso']))){
-        $_SESSION['utente'][]=["nome"=> $_POST['nome'], "cognome"=> $_POST['cognome'],"eta"=> $_POST['eta'], "telefono"=> $_POST['telefono'], "email"=> $_POST['email'], "password"=> $_POST['password'], "sesso"=> $_POST['sesso'] ];
-    }
-
-    //CREARE ARRAY SESSION
-    ?>
-
 <script>
 document.getElementById("nomi").addEventListener("focus", function() {
     // Mostra il messaggio (div) quando si fa clic sulla casella di testo

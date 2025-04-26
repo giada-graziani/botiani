@@ -65,7 +65,6 @@ elseif($nomeFunzione=="prendiProfilo"){
 
     $idU=$_POST["idU"];
 
-
     $q ="SELECT 
                 *
         FROM
@@ -123,5 +122,21 @@ elseif($nomeFunzione=="cercaFoto"){
 
     echo json_encode($ris);
 }
-
+elseif($nomeFunzione=="inserisciMatch"){
+    $idUM=$_POST["idProfiloMatch"];
+    $idU=$_POST["idU"];
+    $q ="INSERT INTO 
+            matchUtenti(id_utenti,id_utenteMatch) 
+        VALUES
+            ('$idU', '$idUM')";
+    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+    
+    if($ris){ // mysqli_num_rows() è utilizzato per le query di selezione (SELECT), non per le query di inserimento (INSERT)
+        echo json_encode(array('esito' => 'successo')); 
+    }
+    else{
+        echo json_encode(array('esito' => 'errore', 'messaggio' =>'match non inserito')); 
+    }
+    
+}
 ?>

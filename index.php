@@ -6,14 +6,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charme</title>
-    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 </head>
 <body>
     <div>
-        <div>
+        <div class="header">
             <!--GIADA-->
             <h1>Benvenuto in Charme</h1>
         </div>
@@ -21,7 +21,7 @@
             <h5>Il sito di incontri pensata per chi cerca più di un semplice match:<br>un’esperienza sofisticata, autentica e coinvolgente</h5>
         </div>
         <div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Login</button>
+            <button  data-bs-toggle="modal" data-bs-target="#exampleModal" >Login</button>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -47,7 +47,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="conferma">Accedi</button>
+                    <button id="conferma">Accedi</button>
                     <!--<input type="submit" value="Accedi">
                     </form>-->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

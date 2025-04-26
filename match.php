@@ -39,18 +39,19 @@
         <div class="profili">
             <div class="profilo" id="fotoProfiloMio">
             <?php
-                    $idU=1;
-                    $q ="SELECT 
-                                *
-                            FROM
-                                foto
-                            WHERE 
-                                id_utenti='$idU'";
-                        $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+                $idU=1;
+                $q ="SELECT 
+                            *
+                        FROM
+                            foto
+                        WHERE 
+                            id_utenti='$idU'";
+                    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
 
-                        while($row= mysqli_fetch_assoc($ris)){
-                            echo"<img src='./images/$row[foto]'>;";
-                        }  
+                while($row= mysqli_fetch_assoc($ris)){
+                    echo"<img src='./images/$row[foto]'>;";
+                }
+
                 ?>
                 <!---->
             </div>
@@ -69,7 +70,6 @@
     // Dati di esempio per i profili
     let profili=[];
     const idU=1;
-    console.log(1);
 
     $.ajax({
         url: "operazioniData.php",
@@ -205,10 +205,7 @@
                         document.addEventListener('mousemove', trascinamento);
                         document.addEventListener('mouseup', movimentoFinale);
                         
-                        // Event listeners per touch
-                        /*carta.addEventListener('touchstart', movimentoIniziale);
-                        carta.addEventListener('touchmove', trascinamento);
-                        carta.addEventListener('touchend', movimentoFinale);*/
+                        
                     }
                     
                     // Funzione per scorrere una carta (destra = like, sinistra = dislike)
@@ -248,26 +245,32 @@
                     function showMatch(profilo) {
                         const matchPopup = document.getElementById('matchPopup');
                         const fotoProfilo = document.getElementById('fotoProfilo');
-                        /*const fotoProfiloMio = document.getElementById('fotoProfiloMio');
-
-                        $.ajax({
-                            url: "operazioniData.php",
-                            data: {
-                                functionname: "cercaFoto",
-                                idU: idU
-                            },
-                            method: "POST",
-                            dataType: "json",
-                            success: function(foto) {
-                                fotoProfiloMio.innerHTML = `<img src="./images/${foto}">`;
-                            }
-                        });*/
 
                         // Imposta l'immagine del profilo con cui hai fatto match
                         fotoProfilo.innerHTML = `<img src="./images/${profilo.foto}" alt="${profilo.nome}">`;
                         
                         // Mostra il popup
                         matchPopup.classList.add('active');
+                        //console.log("ID profilo match:", profilo.id_utenti);
+                        $.ajax({
+                            url: 'operazioniData.php',
+                            method: 'POST',
+                            data: {
+                                functionname: 'inserisciMatch',
+                                idU: idU,
+                                idProfiloMatch: profilo.id_utenti
+                            },
+                            success: function(result){
+                                if(result.esito =='successo'){
+                                    window.location.href="match.php";
+                                }
+                                else{
+                                    alert("Credenziali errate. Riprova.");
+                                    window.location.reload();
+                                }
+                                
+                            }
+                        });
                     }
                     
                     // Event listeners per i pulsanti
