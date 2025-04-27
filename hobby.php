@@ -34,18 +34,17 @@ body {
 .btn-group .btn{
     border-radius: 25px;
     margin: 5px;
-    
     font-size: 15px;
     text-align:center;
     transition: all 0.3s ease;
     
 }
 .btn-group .btn:hover {
-        background-color: #ff416c;
-        color: white;
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+    background-color: #ff416c;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 p{
     margin-top: 30px;
     font-size:16px;
@@ -56,17 +55,17 @@ h1 {
     padding-bottom:10px;
 }
 
-    </style>
-    
-<div class="container">
-    <?php
+</style>
+<?php
     include("conn.php");
     session_start();
    if(isset($_POST['sp']) && isset($_POST['caratteristica']) && isset($_POST['animale']) && isset($_POST['bere']) && isset($_POST['fumo']) && isset($_POST['segno']) && isset($_POST['myInput'])){
     $_SESSION['qualita'][]=["sport"=> $_POST['sp'], "caratteristica"=> $_POST['caratteristica'],"animale"=> $_POST['animale'], "bere"=> $_POST['bere'], "fumo"=> $_POST['fumo'], "segno"=> $_POST['segno'], "descrizione"=> $_POST['myInput'] ];
 }//vedere se metter l'if perchè non è necessario se i campi sono tutti obbligatori
 
-    ?>
+?>
+<div class="container">
+    
 <form action="estetica.php" method="post">
     
         <!-- Sezione Hobby -->

@@ -96,28 +96,30 @@ if((isset($_POST['nome'])) && (isset($_POST['cognome'])) && (isset($_POST['eta']
         <label for="sport">Che sport fai?</label>
         <input type="text" name="sp" id="sport" size="30" required placeholder="Es:pallavolo,calcio,danza..."></input>
 
-
         <br>
         <br>
         <label for="caratt">Che caratteristica ti si addice di più?</label>
         <input type="text"name="caratteristica" id="caratt" size="30" required placeholder="Es:simpatico/a,permaloso/a,gentile..."></input>
         <br>
         <br>
-
-<label class="d-inline-flex gap-1" for="ani">
+        <label class="d-inline-flex gap-1" for="animali">
 In quali di questi animali ti identifichi ?
 </label>
-<div class="btn-group" role="group">
-            <input type="radio" class="btn-check" name="animale" id="ani" autocomplete="off">
-            <label class="btn btn-outline-danger" for="ani" value="gatto">Gatto</label>
-            <input type="radio" class="btn-check" name="animale" id="ani2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="ani2" value="tigre">Tigre</label>
-            <input type="radio" class="btn-check" name="animale" id="ani3" autocomplete="off">
-            <label class="btn btn-outline-danger" for="ani3" value="Leone">Leone</label>
-            <input type="radio" class="btn-check" name="animale" id="ani4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="ani4" value="squalo">Squalo</label>
-            <input type="radio" class="btn-check" name="animale" id="ani5" autocomplete="off">
-            <label class="btn btn-outline-danger" for="ani5" value="volpe">Volpe</label>
+<div class="btn-group" role="group" id="animali">
+            <input type="radio" class="btn-check" name="animale" id="ani" autocomplete="off" value="gatto">
+            <label class="btn btn-outline-danger" for="ani" >Gatto</label>
+
+            <input type="radio" class="btn-check" name="animale" id="ani2" autocomplete="off" value="tigre">
+            <label class="btn btn-outline-danger" for="ani2">Tigre</label>
+
+            <input type="radio" class="btn-check" name="animale" id="ani3" autocomplete="off" value="Leone" >
+            <label class="btn btn-outline-danger" for="ani3">Leone</label>
+
+            <input type="radio" class="btn-check" name="animale" id="ani4" autocomplete="off" value="squalo" >
+            <label class="btn btn-outline-danger" for="ani4">Squalo</label>
+
+            <input type="radio" class="btn-check" name="animale" id="ani5" autocomplete="off" value="volpe" >
+            <label class="btn btn-outline-danger" for="ani5">Volpe</label>
             
         </div>
 
@@ -125,32 +127,36 @@ In quali di questi animali ti identifichi ?
         <br>
         <br>
         <label for="alc">Quanto bevi di solito?</label>
-        <div class="btn-group" role="group">
-            <input type="radio" class="btn-check" name="bere" id="bere1" autocomplete="off">
-            <label class="btn btn-outline-danger" for="bere1" value="no">Non fa per me</label>
-            <input type="radio" class="btn-check" name="bere" id="bere2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="bere2" value="astemio">sono astemio</label>
-            <input type="radio" class="btn-check" name="bere" id="bere3" autocomplete="off">
-            <label class="btn btn-outline-danger" for="bere3" value="ogni">Ogni tanto</label>
-            <input type="radio" class="btn-check" name="bere" id="bere4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="bere4" value="spesso">Spesso</label>
-            <input type="radio" class="btn-check" name="bere" id="bere5" autocomplete="off">
-            <label class="btn btn-outline-danger" for="bere5" value="compagnia">Solo in compagnia</label>
+        <div class="btn-group" role="group" id="alc">
+            <input type="radio" class="btn-check" name="bere" id="bere1" autocomplete="off" value="no">
+            <label class="btn btn-outline-danger" for="bere1" >Non fa per me</label>
+
+            <input type="radio" class="btn-check" name="bere" id="bere2" autocomplete="off" value="astemio">
+            <label class="btn btn-outline-danger" for="bere2">sono astemio</label>
+
+            <input type="radio" class="btn-check" name="bere" id="bere3" autocomplete="off" value="ogni">
+            <label class="btn btn-outline-danger" for="bere3">Ogni tanto</label>
+
+            <input type="radio" class="btn-check" name="bere" id="bere4" autocomplete="off" value="spesso">
+            <label class="btn btn-outline-danger" for="bere4">Spesso</label>
+
+            <input type="radio" class="btn-check" name="bere" id="bere5" autocomplete="off" value="compagnia">
+            <label class="btn btn-outline-danger" for="bere5">Solo in compagnia</label>
             
         </div>
         <br>
         <br>
 
 <label for="fu">Quanto spesso fumi?</label>
-<div class="btn-group" role="group">
-            <input type="radio" class="btn-check" name="fumo" id="fumo1" autocomplete="off">
-            <label class="btn btn-outline-danger" for="fumo1" value="no">Non fa per me</label>
-            <input type="radio" class="btn-check" name="fumo" id="fumo2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="fumo3" value="ogni">Ogni tanto</label>
-            <input type="radio" class="btn-check" name="fumo" id="fumo4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="fumo4" value="spesso">Spesso</label>
-            <input type="radio" class="btn-check" name="fumo" id="fumo5" autocomplete="off">
-            <label class="btn btn-outline-danger" for="fumo5" value="compagnia">Solo in compagnia</label>
+<div class="btn-group" role="group" id="fu">
+            <input type="radio" class="btn-check" name="fumo" id="fumo1" autocomplete="off" value="no">
+            <label class="btn btn-outline-danger" for="fumo1">Non fa per me</label>
+            <input type="radio" class="btn-check" name="fumo" id="fumo2" autocomplete="off" value="ogni">
+            <label class="btn btn-outline-danger" for="fumo2">Ogni tanto</label>
+            <input type="radio" class="btn-check" name="fumo" id="fumo4" autocomplete="off" value="spesso">
+            <label class="btn btn-outline-danger" for="fumo4">Spesso</label>
+            <input type="radio" class="btn-check" name="fumo" id="fumo5" autocomplete="off" value="compagnia">
+            <label class="btn btn-outline-danger" for="fumo5">Solo in compagnia</label>
             
         </div>
         <br>

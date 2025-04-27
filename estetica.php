@@ -167,7 +167,7 @@
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option5C" autocomplete="off" value="Neri">
                     <label class="btn btn-danger" for="option5C">Neri</label>
 
-                    <input type="radio" class="btn-check" name="optionsCapelli" id="option6C" autocomplete="off" value="Biondi">
+                    <input type="radio" class="btn-check" name="optionsCapelli" id="option6C" autocomplete="off" value="Altro">
                     <label class="btn btn-danger" for="option6C">Altro</label>
                 </div>
                 <br />
@@ -247,7 +247,8 @@ $(document).ready(function(){//quando la pagina è pronta
         console.log(altezza);
         console.log(stile);
     
-        if(altezza && carica) {
+        //CONTROLLARE SE è GIUSTO CARICA==1
+        if(altezza && carica ==1) {
             $.ajax(
                 {url: "operazioniData.php",
                 data: "functionname=estetica&occhi="+occhi+"&capelli="+capelli+"&altezza="+altezza+"&stile="+stile+"&idU="+idU,   

@@ -71,55 +71,63 @@ button:hover {
 }
 </style>
 <body>
-
-<div class="container">
     <?php
     include("conn.php");
     session_start();
     //da interessi prendi estetica
+
+    session_start();
+    include("conn.php");
+   
+    if(isset($_POST['hobby']) && isset($_POST['sentire'])&& isset($_POST['esprimi'])){
+        $_SESSION['hobby'][]=["hobby"=> $_POST['hobby'], "sentire"=> $_POST['sentire'],"esprimi"=> $_POST['esprimi']];
+    }
+
    ?>
-   <h1>Che charme cerchi?</h1>
-    <form action="raccoltaDati.php" method="post" >
-        <div class="form-group">
-            <label for="gen">Genere</label>
-            <select id="gen" name="genere" required>
-                <option value="maschio">Maschio</option>
-                <option value="femmina">Femmina</option>
-                <option value="entrambi">Entrambi</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="carat">Qual è la caratteristica più importante che stai cercando?</label>
-            <input type="text" id="carat" name="cerchi" required placeholder="Es: Onestà, umorismo...">
-        </div>
-        <div class="form-group">
-            <label for="capelli">Che colore di capelli ti attrae?</label>
-            <input type="text" id="capelli" name="colCapelli" required placeholder="Es: Castani, biondi, rossi...">
-        </div>
-        <div class="form-group">
-            <label for="occhi">E per quanto riguarda gli occhi?</label>
-            <input type="text" id="occhi" name="colOcchi" required placeholder="Es: Azzurri, verdi, marroni...">
-        </div>
-
-        <div class="form-group">
-            <label for="cm">Quanto vorresti fosse alto/a?</label>
-            <input type="number" id="cm" name="altezza" required placeholder="Es: 170 cm">
-        </div>
-
-        <div class="form-group">
-            <label for="sti">Quale stile dovrebbe avere la persona che cerchi?</label>
-            <input type="text" id="sti" name="stile" required placeholder="Es: Casual, elegante, sportivo...">
-        </div>
+<div class="container">
+    
+    <h1>Che charme cerchi?</h1>
+     <form action="raccoltaDati.php" method="post" >
+         <div class="form-group">
+             <label for="gen">Genere</label>
+             <select id="gen" name="genere" required>
+                 <option value="maschio">Maschio</option>
+                 <option value="femmina">Femmina</option>
+                 <option value="entrambi">Entrambi</option>
+             </select>
+         </div>
+         <div class="form-group">
+             <label for="carat">Qual è la caratteristica più importante che stai cercando?</label>
+             <input type="text" id="carat" name="cerchi" required placeholder="Es: Onestà, umorismo...">
+         </div>
+         <div class="form-group">
+             <label for="capelli">Che colore di capelli ti attrae?</label>
+             <input type="text" id="capelli" name="colCapelli" required placeholder="Es: Castani, biondi, rossi...">
+         </div>
+         <div class="form-group">
+             <label for="occhi">E per quanto riguarda gli occhi?</label>
+             <input type="text" id="occhi" name="colOcchi" required placeholder="Es: Azzurri, verdi, marroni...">
+         </div>
  
-        <div class="form-group">
-            <label for="perche">Perché hai deciso di iscriverti a Charme?</label>
-            <input type="text" id="perche" name="ragione" required placeholder="Es: Voglio una relazione seria, voglio fare nuove conoscenze...">
-        </div>
-        <div>
-             <button type="submit" >Avanti</button>
-        </form>
-        </div>
-</div>
-    </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</html>
+         <div class="form-group">
+             <label for="cm">Quanto vorresti fosse alto/a?</label>
+             <input type="number" id="cm" name="altezza" required placeholder="Es: 170 cm">
+         </div>
+ 
+         <div class="form-group">
+             <label for="sti">Quale stile dovrebbe avere la persona che cerchi?</label>
+             <input type="text" id="sti" name="stile" required placeholder="Es: Casual, elegante, sportivo...">
+         </div>
+  
+         <div class="form-group">
+             <label for="perche">Perché hai deciso di iscriverti a Charme?</label>
+             <input type="text" id="perche" name="ragione" required placeholder="Es: Voglio una relazione seria, voglio fare nuove conoscenze...">
+         </div>
+         <div>
+              <button type="submit" >Avanti</button>
+         </form>
+         </div>
+ </div>
+     </body>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ </html>
