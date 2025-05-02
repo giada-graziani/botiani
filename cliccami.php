@@ -43,8 +43,11 @@
             <input type="number" name="eta" id="age" min="18" required>
             <br>
             <br>
-            <label for="telefoni">Dacci il tuo numero di telefono :</label>
-            <input type="tel" id="telefoni" name="telefono" required>
+            <label for="telefoni">Dacci il tuo numero di telefono:</label>
+            <input type="tel" id="telefoni" name="telefono" pattern="[0-9]{10}" 
+           maxlength="10" 
+           title="Inserisci esattamente 10 cifre numeriche" 
+           required>
             <br>
             <br>
             <label for="sessi">Qual è il tuo sesso? :</label>
@@ -65,7 +68,7 @@
         <div>
             <input type="submit" value="Crea">
         </form>
-            <a href="index.php"><button>Annulla</button></a>
+            <a href="index.php" class="annulla"><button class="annulla">Annulla</button></a>
         </div>
     </div>
 <script>
@@ -77,6 +80,39 @@ document.getElementById("cognomi").addEventListener("focus", function() {
     // Mostra il messaggio (div) quando si fa clic sulla casella di testo
     document.getElementById("message2").style.display = "block";
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Riferimento all'input e al messaggio di errore
+    const telefonoInput = document.getElementById('telefoni');
+    
+    if (telefonoInput) {
+        // Impedisci l'inserimento di caratteri non numerici
+        telefonoInput.addEventListener('keypress', function(e) {
+            // Ottieni il carattere dalla tastiera
+            const char = String.fromCharCode(e.charCode);
+            
+            // Permetti solo numeri (0-9)
+            if (!/^[0-9]$/.test(char)) {
+                e.preventDefault(); // Impedisci l'inserimento
+            }
+        });
+    
+        /*
+        // Rimuovi eventuali caratteri non numerici in caso di incolla
+        telefonoInput.addEventListener('input', function(e) {
+            // Rimuovi tutti i caratteri non numerici
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Limita a 10 caratteri (per sicurezza aggiuntiva)
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+    });*/
+
+    }
+});
+
 </script>
     
 </body>
