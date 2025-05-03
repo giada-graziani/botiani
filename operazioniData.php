@@ -44,24 +44,6 @@ if($nomeFunzione=="estetica"){
         echo json_encode(array('esito' => 'errore', 'messaggio' =>'caratteristiche non inserite')); 
     }
 }
-elseif($nomeFunzione=="login"){
-    $email= $_POST["email"];
-    $pws= $_POST["pws"];
-    $q="SELECT 
-                *
-        FROM
-            utenti
-        WHERE 
-            email = '$email' AND password= '$pws'";
-    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
-
-    if(mysqli_num_rows($ris)>0){
-        echo json_encode(array('esito' => 'successo')); 
-    }
-    else{
-        echo json_encode(array('esito' =>'errore', 'messaggio' =>'not found')); 
-    }
-}
 elseif($nomeFunzione=="prendiProfilo"){
 
     $idU=$_POST["idU"];

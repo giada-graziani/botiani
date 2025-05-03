@@ -16,7 +16,7 @@
         include("conn.php");
         session_start();
         $idU=$_SESSION['idU'];
-        echo"<p hidden='hidden' id='idU'>$idU</p>";
+        echo"<p id='idU'>$idU</p>";
     ?>
     <div class="header">
         <h1>Ecco i posssibili charm che abbiamo trovato per te!</h1>
@@ -30,10 +30,14 @@
         <button class="bottone dislike" id="dislikeBtn">✕</button>
         <button class="bottone like" id="likeBtn">♥</button>
     </div>
+    <div>
+        <a href="riassunto.php"><p>Guarda le persone con cui hai fatto match!</p></a>
+    </div>
     
     <div class="fineCarte" id="noCarte">
         <h3>Hai visto tutti i profili per oggi!</h3>
         <button id="ricarica">Ricarica altri profili</button>
+
     </div>
     
     <div class="popUp" id="matchPopup">
@@ -52,7 +56,6 @@
                 while($row= mysqli_fetch_assoc($ris)){
                     echo"<img src='./images/$row[foto]'>;";
                 }
-
                 ?>
                 <!---->
             </div>
@@ -261,14 +264,8 @@
                                 idProfiloMatch: profilo.id_utenti
                             },
                             success: function(result){
-                                if(result.esito =='successo'){
-                                    window.location.href="match.php";
-                                }
-                                else{
-                                    alert("Credenziali errate. Riprova.");
-                                    window.location.reload();
-                                }
                                 
+                                    window.location.href="match.php";                        
                             }
                         });
                     }

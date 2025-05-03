@@ -46,53 +46,26 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control" name="password" id="pws" required>
-                                        <label for="pws">Password</label>
-                            </div>
+                                        <input type="password" class="form-control" name="password" id="passwords" required>
+                                        <label for="passwords">Password</label>
+                                    </div>
+                                </div>
+                            
                         </div>
-                    
+                        <div class="modal-footer">
+                            <input id="conferma" type="submit" value="Accedi">
+                            </form>
+                            <button type="button" id="chiudi" data-bs-dismiss="modal">Chiudi</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="conferma" type="button">Accedi</button>
-                    </form>
-                    <button type="button" id="chiudi" data-bs-dismiss="modal">Chiudi</button>
-                </div>
-                </div>
-            </div>
             </div>
             <a href="cliccami.php"><p>non sei ancora registrato?Cliccami!</p></a>
-            
-        </div>
+        </div>  
     </div>
 
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script type=text/javascript>
-    $(document).ready(function(){ //quando la pagina è pronta 
-    
-        $("#conferma").click(function(){
-            const email= document.getElementById("emails").value;
-            const pws= document.getElementById("pws").value;
 
-            $.ajax(
-                {url: "operazioniData.php",
-                data: "functionname=login&email="+email+"&pws="+pws,   
-                method:"POST",
-                dataType: "JSON",
-                success: function(result){
-                    if(result.esito =='successo'){
-                        window.location.href="match.php";
-                    }
-                    else{
-                        alert("Credenziali errate. Riprova.");
-                        window.location.reload();
-                    }
-                    
-                    }
-                }
-            );
-        });
-    });
-</script>
 </html>
