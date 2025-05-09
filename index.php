@@ -22,7 +22,7 @@
             <h1>Benvenuto in Charme</h1>
         </div>
         <div>
-            <h5>Il sito di incontri pensata per chi cerca più di un semplice match:<br>un'esperienza sofisticata, autentica e coinvolgente</h5>
+            <h5>Il sito di incontri pensato per chi cerca più di un semplice match:<br>un'esperienza sofisticata, autentica e coinvolgente</h5>
         </div>
         <div>
             <!-- Pulsante per aprire il modal -->

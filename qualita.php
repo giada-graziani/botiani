@@ -12,15 +12,17 @@
 <body>
 <style>
 form {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(248, 248, 248, 0.747);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    animation: scaleIn 0.8s ease-out;
 }
 body {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,9 +31,10 @@ body {
     color: #333;
 }
 h1 {
-    text-align: center;
-    color: rgb(132, 11, 15);
-    padding-bottom:10px;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #722c44;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 input[type="text"]{
     background-color:rgb(225, 175, 177);
@@ -58,14 +61,35 @@ p{
     font-size:13px;
     text-align:center;
     font-style:italic;
+    color:#6e446b;
 }
 .btn-group .btn{
       border-radius: 25px;
       font-size: 13px;
       text-align:center;
       transition: all 0.3s ease;
-      
+      background-color: #db687b; /* Beige caldo */
+    color: #6e446b; /* Colore del testo che si abbina allo sfondo */
+    border: 1px solid #e1b7b7; /* Bordi dello stesso colore */
     }
+
+/* Rimuovi il margine sull'ultimo bottone per evitare uno spazio extra */
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Hover: Cambia il colore quando si passa sopra */
+.btn-group .btn:hover {
+    background-color: #db687b; /* Un rosa chiaro per l'effetto hover */
+    color: #fff; /* Cambia il colore del testo al passaggio */
+}
+
+/* Focus (per quando il bottone è selezionato) */
+.btn-group .btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(200, 100, 120, 0.6); /* Sfumatura rosa per il focus */
+}
+
 
 button {
     background-color: #db687b;
@@ -80,6 +104,35 @@ button {
 button:hover {
     background-color: #e94e68;
 }
+label{
+   color: #6e446b;
+}
+ 
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+ 
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+ 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body > form {
+        width: 95%;
+        margin: 30px 20px 30px 20px;
+    }
+   
+   h1 {
+        font-size: 2.5rem;
+    }
+   
+    
+}
+ 
 </style>
     <div class="container">
 <?php
@@ -91,7 +144,7 @@ if((isset($_POST['nome'])) && (isset($_POST['cognome'])) && (isset($_POST['eta']
 
 ?>
 <form action="hobby.php" method="POST"> 
-        <h1>Mostraci il tuo charme</h1>
+        <h1>Mostraci il tuo charme✨</h1>
         <p>racconta un pò di te...</p>
         <label for="sport">Che sport fai?</label>
         <input type="text" name="sp" id="sport" size="30" required placeholder="Es:pallavolo,calcio,danza..."></input>

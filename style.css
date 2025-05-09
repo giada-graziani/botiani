@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #5c2438 0%, #722c44 100%);
+    background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,14 +26,14 @@ body {
 }
  
 .header h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 10px;
-    color: #FFB393;
+    color: #722c44;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
  
 h5:not(.modal h5) {
-    color: #F4CAB8;
+    color: #b64615;
     font-weight: 400;
     text-align: center;
     margin-bottom: 30px;
@@ -44,22 +44,22 @@ h5:not(.modal h5) {
  
 /* Container principale */
 body > .contenitore{
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(248, 248, 248, 0.747);
     backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
+    margin: 30px 20px 30px 20px;
     max-width: 600px;
     text-align: center;
     animation: scaleIn 0.8s ease-out;
 }
 #contenitoreIndex{
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(248, 248, 248, 0.747);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     text-align: center;
     animation: scaleIn 0.8s ease-out;
@@ -68,7 +68,7 @@ body > .contenitore{
 a {
     display: inline-block;
     margin-top: 20px;
-    color: #fff;
+    color: #b64615;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -86,7 +86,7 @@ a p:after {
     position: absolute;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: #b64615;
     left: 0;
     bottom: 0;
     transition: width 0.3s ease;
@@ -186,7 +186,7 @@ a:hover p:after {
 @media (max-width: 768px) {
     body > .contenitore {
         width: 95%;
-        padding: 30px 20px;
+        margin: 30px 20px 30px 20px;
     }
    
     .header h1 {
@@ -220,6 +220,7 @@ label:not(.modal label) {
     font-weight: bold;
     margin-top: 15px;
     display: block;
+    color:#6e446b;
 }
  
 /* Bottone custom mantenendo compatibilità con Bootstrap */
