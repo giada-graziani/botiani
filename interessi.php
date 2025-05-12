@@ -8,73 +8,121 @@
     <title>Charme</title>
 </head>
 <style>
-form {
-    animation: fadeIn 1s ease-in;
+
+body > .container{
+    background-color: rgba(248, 248, 248, 0.747);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 30px 20px 30px 20px;
+    max-width: 600px;
+    text-align: center;
+    animation: scaleIn 0.8s ease-out;
 }
 
+body {
+    background: linear-gradient(135deg, #642432 0%, #c56975 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #722c44;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.input-group-text{
+    background-color: #db687b;
+    border:none;
+    color:white;
+}
+.form-select{
+    background-color:rgb(225, 175, 177); 
+    border:none;
+    color:#6e446b;
+}
+h1{
+    text-align:center;
+}
+p{
+    font-size:13px;
+    text-align:center;
+    font-style:italic;
+    color:#6e446b;
+}
+ 
+input[type="text"],
+input[type="number"],
+input[list],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+input[type="submit"] {
+    background-color:#db687b;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
+    margin: 10px 0;
+}
+input[type="submit"]:hover {
+    background-color: #e94e68;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
+}
+label{
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    color:#6e446b;
+}
+ 
+ 
+/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-form {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+ 
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
-body {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    color: #333;
-}
-h1 {
-    text-align: center;
-    color: rgb(132, 11, 15);
-    padding-bottom:10px;
-}
-.form-group {
-    margin-bottom: 15px;
-
-}
-label {
-    font-size: 1rem;
-    margin-bottom:5px;
-    display: block;
-}
-input[type="text"], input[type="number"], select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-button {
-    background-color: #db687b;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-button:hover {
-    background-color: #e94e68;
+ 
+/* Responsive */
+@media (max-width: 768px) {
+    body > form {
+        width: 95%;
+        margin: 30px 20px 30px 20px;
+    }
+   
+   h1 {
+        font-size: 2.5rem;
+    }
+   
+    
 }
 </style>
 <body>
     <?php
-    include("conn.php");
-    session_start();
-    //da interessi prendi estetica
 
     session_start();
     include("conn.php");
@@ -124,7 +172,7 @@ button:hover {
              <input type="text" id="perche" name="ragione" required placeholder="Es: Voglio una relazione seria, voglio fare nuove conoscenze...">
          </div>
          <div>
-              <button type="submit" >Avanti</button>
+              <input type="submit" value="Avanti"/>
          </form>
          </div>
  </div>

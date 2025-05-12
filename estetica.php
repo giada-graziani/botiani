@@ -36,7 +36,7 @@
             <!--GIADA-->
             <h1>Completa la tua descrizione</h1>
         </div>
-        <div class="formCliccami">
+        <div class="contenitore">
             <!--IMMAGINE -->
             <div class="fotoContainer">
                 <form enctype="multipart/form-data" method="post">
@@ -130,45 +130,45 @@
 
                 <label >Colore degli occhi: </label>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="coloriOcchi" id="occhi">
-                    <input type="radio" class="btn-check" name="optionsOcchi" id="option1O" autocomplete="off" value="Marroni" checked>
-                    <label class="btn btn-danger" for="option1O">Marroni</label>
+                    <input type="radio" class="btn-check" name="optionsOcchi" id="option1O" autocomplete="off" value="Marroni">
+                    <label class="btn" for="option1O">Marroni</label>
 
                     <input type="radio" class="btn-check" name="optionsOcchi" id="option2O" autocomplete="off" value="Grigi">
-                    <label class="btn btn-danger" for="option2O">Grigi</label>
+                    <label class="btn" for="option2O">Grigi</label>
 
                     <input type="radio" class="btn-check" name="optionsOcchi" id="option3O" autocomplete="off" value="Verdi">
-                    <label class="btn btn-danger" for="option3O">Verdi</label>
+                    <label class="btn" for="option3O">Verdi</label>
 
                     <input type="radio" class="btn-check" name="optionsOcchi" id="option4O" autocomplete="off" value="Neri">
-                    <label class="btn btn-danger" for="option4O">Neri</label>
+                    <label class="btn" for="option4O">Neri</label>
 
                     <input type="radio" class="btn-check" name="optionsOcchi" id="option5O" autocomplete="off" value="Blu">
-                    <label class="btn btn-danger" for="option5O">Blu</label>
+                    <label class="btn" for="option5O">Blu</label>
 
                     <input type="radio" class="btn-check" name="optionsOcchi" id="option6O" autocomplete="off" value="Azzurri">
-                    <label class="btn btn-danger" for="option6O">Azzurri</label>
+                    <label class="btn" for="option6O">Azzurri</label>
                 </div>
                 <br />
                 <br />
                 <label >Colore dei capelli: </label>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="coloriCapelli" id="capelli">
-                    <input type="radio" class="btn-check" name="optionsCapelli" id="option1C" autocomplete="off" value="Castani" checked>
-                    <label class="btn btn-danger" for="option1C">Castani</label>
+                    <input type="radio" class="btn-check" name="optionsCapelli" id="option1C" autocomplete="off" value="Castani">
+                    <label class="btn" for="option1C">Castani</label>
 
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option2C" autocomplete="off" value="Mori">
-                    <label class="btn btn-danger" for="option2C">Mori</label>
+                    <label class="btn" for="option2C">Mori</label>
 
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option3C" autocomplete="off" value="Biondi">
-                    <label class="btn btn-danger" for="option3C">Biondi</label>
+                    <label class="btn" for="option3C">Biondi</label>
 
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option4C" autocomplete="off" value="Rossi">
-                    <label class="btn btn-danger" for="option4C">Rossi</label>
+                    <label class="btn" for="option4C">Rossi</label>
 
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option5C" autocomplete="off" value="Neri">
-                    <label class="btn btn-danger" for="option5C">Neri</label>
+                    <label class="btn" for="option5C">Neri</label>
 
                     <input type="radio" class="btn-check" name="optionsCapelli" id="option6C" autocomplete="off" value="Altro">
-                    <label class="btn btn-danger" for="option6C">Altro</label>
+                    <label class="btn" for="option6C">Altro</label>
                 </div>
                 <br />
                 <br />
@@ -178,23 +178,23 @@
                 <br />
                 <label >Quale stile ti rappresenta di più? : </label>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="stile" id="stili">
-                    <input type="radio" class="btn-check" name="optionsStili" id="option1S" autocomplete="off" value="Baggy" checked>
-                    <label class="btn btn-danger" for="option1S">Baggy</label>
+                    <input type="radio" class="btn-check" name="optionsStili" id="option1S" autocomplete="off" value="Baggy">
+                    <label class="btn" for="option1S">Baggy</label>
 
                     <input type="radio" class="btn-check" name="optionsStili" id="option2S" autocomplete="off" value="Casual">
-                    <label class="btn btn-danger" for="option2S">Casual</label>
+                    <label class="btn" for="option2S">Casual</label>
 
                     <input type="radio" class="btn-check" name="optionsStili" id="option3S" autocomplete="off" value="Elegante">
-                    <label class="btn btn-danger" for="option3S">Elegante</label>
+                    <label class="btn" for="option3S">Elegante</label>
 
                     <input type="radio" class="btn-check" name="optionsStili" id="option4S" autocomplete="off" value="Streetwear">
-                    <label class="btn btn-danger" for="option4S">Streetwear</label>
+                    <label class="btn" for="option4S">Streetwear</label>
 
                     <input type="radio" class="btn-check" name="optionsStili" id="option5S" autocomplete="off" value="Goth">
-                    <label class="btn btn-danger" for="option5S">Goth</label>
+                    <label class="btn" for="option5S">Goth</label>
 
                     <input type="radio" class="btn-check" name="optionsStili" id="option6S" autocomplete="off" value="Sportivo">
-                    <label class="btn btn-danger" for="option6S">Sportivo</label>
+                    <label class="btn" for="option6S">Sportivo</label>
                 </div>   
                 <br />
                 <br /> 
@@ -257,7 +257,7 @@ $(document).ready(function(){//quando la pagina è pronta
                 success: function(result){
                     //CONTROLLARE PERCHè RESULT NON RESULTA
                     if(result.esito == 'successo'){
-                        window.location.href="interessi.php";
+                        window.location.href="match.php";
                     }
                     else{
                         alert("i dati non sono stati inseriti correttamente");

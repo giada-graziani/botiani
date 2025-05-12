@@ -11,24 +11,28 @@
 </head>
 <body>
 <style>
-form {
+body > .container{
     background-color: rgba(248, 248, 248, 0.747);
+    backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 90%;
+    margin: 30px 20px 30px 20px;
     max-width: 600px;
     text-align: center;
     animation: scaleIn 0.8s ease-out;
 }
+
 body {
     background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 h1 {
     font-size: 2.8rem;
@@ -45,14 +49,17 @@ input[type="text"]{
         margin: 5px 0;
     border-radius: 5px;
     font-size: 1rem;
+    
 }
 .input-group-text{
-    background-color: #ff9a9e;
+    background-color: #db687b;
     border:none;
+    color:white;
 }
 .form-select{
     background-color:rgb(225, 175, 177); 
     border:none;
+    color:#6e446b;
 }
 h1{
     text-align:center;
@@ -63,12 +70,17 @@ p{
     font-style:italic;
     color:#6e446b;
 }
+.btn-check:checked + .btn {
+  background-color: #e94e68; /* Rosa chiaro quando selezionato */
+  color: white;
+  border:none;
+}
 .btn-group .btn{
       border-radius: 25px;
       font-size: 13px;
       text-align:center;
       transition: all 0.3s ease;
-      background-color: #db687b; /* Beige caldo */
+      background-color:rgb(225, 175, 177); /* Beige caldo */
     color: #6e446b; /* Colore del testo che si abbina allo sfondo */
     border: 1px solid #e1b7b7; /* Bordi dello stesso colore */
     }
@@ -80,9 +92,10 @@ p{
 
 /* Hover: Cambia il colore quando si passa sopra */
 .btn-group .btn:hover {
-    background-color: #db687b; /* Un rosa chiaro per l'effetto hover */
+    background-color:#db687b ; /* Un rosa chiaro per l'effetto hover */
     color: #fff; /* Cambia il colore del testo al passaggio */
 }
+
 
 /* Focus (per quando il bottone è selezionato) */
 .btn-group .btn:focus {
@@ -90,22 +103,26 @@ p{
     box-shadow: 0 0 5px 2px rgba(200, 100, 120, 0.6); /* Sfumatura rosa per il focus */
 }
 
-
-button {
-    background-color: #db687b;
+input[type="submit"] {
+    background-color:#db687b;
     color: white;
     border: none;
-    padding: 12px 20px;
-    margin-top: 20px;
-    border-radius: 10px;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
+    margin: 10px 0;
 }
-button:hover {
+input[type="submit"]:hover {
     background-color: #e94e68;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
 }
 label{
    color: #6e446b;
+   font-weight: bold;
 }
  
 /* Animations */
@@ -119,7 +136,7 @@ label{
     to { opacity: 1; transform: scale(1); }
 }
  
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
     body > form {
         width: 95%;
@@ -160,19 +177,19 @@ In quali di questi animali ti identifichi ?
 </label>
 <div class="btn-group" role="group" id="animali">
             <input type="radio" class="btn-check" name="animale" id="ani" autocomplete="off" value="gatto">
-            <label class="btn btn-outline-danger" for="ani" >Gatto</label>
+            <label class="btn" for="ani" >Gatto</label>
 
             <input type="radio" class="btn-check" name="animale" id="ani2" autocomplete="off" value="tigre">
-            <label class="btn btn-outline-danger" for="ani2">Tigre</label>
+            <label class="btn" for="ani2">Tigre</label>
 
             <input type="radio" class="btn-check" name="animale" id="ani3" autocomplete="off" value="Leone" >
-            <label class="btn btn-outline-danger" for="ani3">Leone</label>
+            <label class="btn" for="ani3">Leone</label>
 
             <input type="radio" class="btn-check" name="animale" id="ani4" autocomplete="off" value="squalo" >
-            <label class="btn btn-outline-danger" for="ani4">Squalo</label>
+            <label class="btn" for="ani4">Squalo</label>
 
             <input type="radio" class="btn-check" name="animale" id="ani5" autocomplete="off" value="volpe" >
-            <label class="btn btn-outline-danger" for="ani5">Volpe</label>
+            <label class="btn" for="ani5">Volpe</label>
             
         </div>
 
@@ -182,19 +199,19 @@ In quali di questi animali ti identifichi ?
         <label for="alc">Quanto bevi di solito?</label>
         <div class="btn-group" role="group" id="alc">
             <input type="radio" class="btn-check" name="bere" id="bere1" autocomplete="off" value="no">
-            <label class="btn btn-outline-danger" for="bere1" >Non fa per me</label>
+            <label class="btn" for="bere1" >Non fa per me</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere2" autocomplete="off" value="astemio">
-            <label class="btn btn-outline-danger" for="bere2">sono astemio</label>
+            <label class="btn" for="bere2">sono astemio</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere3" autocomplete="off" value="ogni">
-            <label class="btn btn-outline-danger" for="bere3">Ogni tanto</label>
+            <label class="btn" for="bere3">Ogni tanto</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere4" autocomplete="off" value="spesso">
-            <label class="btn btn-outline-danger" for="bere4">Spesso</label>
+            <label class="btn" for="bere4">Spesso</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere5" autocomplete="off" value="compagnia">
-            <label class="btn btn-outline-danger" for="bere5">Solo in compagnia</label>
+            <label class="btn" for="bere5">Solo in compagnia</label>
             
         </div>
         <br>
@@ -203,13 +220,13 @@ In quali di questi animali ti identifichi ?
 <label for="fu">Quanto spesso fumi?</label>
 <div class="btn-group" role="group" id="fu">
             <input type="radio" class="btn-check" name="fumo" id="fumo1" autocomplete="off" value="no">
-            <label class="btn btn-outline-danger" for="fumo1">Non fa per me</label>
+            <label class="btn" for="fumo1">Non fa per me</label>
             <input type="radio" class="btn-check" name="fumo" id="fumo2" autocomplete="off" value="ogni">
-            <label class="btn btn-outline-danger" for="fumo2">Ogni tanto</label>
+            <label class="btn" for="fumo2">Ogni tanto</label>
             <input type="radio" class="btn-check" name="fumo" id="fumo4" autocomplete="off" value="spesso">
-            <label class="btn btn-outline-danger" for="fumo4">Spesso</label>
+            <label class="btn" for="fumo4">Spesso</label>
             <input type="radio" class="btn-check" name="fumo" id="fumo5" autocomplete="off" value="compagnia">
-            <label class="btn btn-outline-danger" for="fumo5">Solo in compagnia</label>
+            <label class="btn" for="fumo5">Solo in compagnia</label>
             
         </div>
         <br>
@@ -240,7 +257,7 @@ In quali di questi animali ti identifichi ?
 <br>
 <br>
   <div>
-    <button type="submit">Avanti</button>
+    <input type="submit" value="Avanti"/>
     </form>
  </div>
 

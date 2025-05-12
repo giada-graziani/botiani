@@ -10,27 +10,30 @@
 <body>
 
   <style>
-    form {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
+    
 body {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-.container{
-    text-align:center;
-    
+body > .container{
+    background-color: rgba(248, 248, 248, 0.747);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 30px 20px 30px 20px;
+    max-width: 600px;
+    text-align: center;
+    animation: scaleIn 0.8s ease-out;
 }
+
 .btn-group .btn{
     border-radius: 25px;
     margin: 5px;
@@ -46,13 +49,102 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 p{
-    margin-top: 30px;
-    font-size:16px;
+    font-size:13px;
+    text-align:center;
+    font-style:italic;
+    color:#6e446b;
 }
 h1 {
-    text-align: center;
-    color: rgb(132, 11, 15);
-    padding-bottom:10px;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #722c44;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+h5{
+    text-align:center;
+    font-style:italic;
+    color:#6e446b;
+}
+label{
+   color: #6e446b;
+   font-weight: bold;
+   padding-top:18px;
+}
+
+.btn-check:checked + .btn {
+  background-color: #e94e68; /* Rosa chiaro quando selezionato */
+  color: white;
+  border:none;
+}
+.btn-group .btn{
+      border-radius: 25px;
+      font-size: 13px;
+      text-align:center;
+      transition: all 0.3s ease;
+      background-color:rgb(225, 175, 177); /* Beige caldo */
+    color: #6e446b; /* Colore del testo che si abbina allo sfondo */
+    border: 1px solid #e1b7b7; /* Bordi dello stesso colore */
+    }
+
+/* Rimuovi il margine sull'ultimo bottone per evitare uno spazio extra */
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Hover: Cambia il colore quando si passa sopra */
+.btn-group .btn:hover {
+    background-color:#db687b ; /* Un rosa chiaro per l'effetto hover */
+    color: #fff; /* Cambia il colore del testo al passaggio */
+}
+
+
+/* Focus (per quando il bottone è selezionato) */
+.btn-group .btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(200, 100, 120, 0.6); /* Sfumatura rosa per il focus */
+}
+
+input[type="submit"] {
+    background-color:#db687b;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
+    margin: 10px 0;
+}
+input[type="submit"]:hover {
+    background-color: #e94e68;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+ 
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+ 
+/* Responsive */
+@media (max-width: 768px) {
+    body > form {
+        width: 95%;
+        margin: 30px 20px 30px 20px;
+    }
+   
+   h1 {
+        font-size: 2.5rem;
+    }
+   
+    
 }
 
 </style>
@@ -66,60 +158,57 @@ h1 {
 ?>
 <div class="container">
     
-<form action="estetica.php" method="post">
+<form action="interessi.php" method="post">
     
         <!-- Sezione Hobby -->
         <h1>Cosa ti rende interessante?</h1>
-        <div class="btn-group" role="group">
+
+        <label for="gr">Quale di questi hobby ti piace di più?</label>
+        <div class="btn-group" id="gr" role="group">
             <input type="radio" class="btn-check" name="hobby" id="hobby1" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby1" value="dipingo">Dipingo</label>
+            <label class="btn" for="hobby1" value="dipingo">Dipingo</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby2" value="canto">Canto</label>
+            <label class="btn" for="hobby2" value="canto">Canto</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby3" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby3" value="ballo">Ballo</label>
+            <label class="btn" for="hobby3" value="ballo">Ballo</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby4" value="recito">Recito</label>
+            <label class="btn" for="hobby4" value="recito">Recito</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby5" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby5" value="tv">Guardo la tv</label>
+            <label class="btn" for="hobby5" value="tv">Guardo la tv</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby6" autocomplete="off">
-            <label class="btn btn-outline-danger" for="hobby6" value="dormo">Dormo</label>
+            <label class="btn" for="hobby6" value="dormo">Dormo</label>
         </div>
 
         <!-- Sezione Come ti fai sentire -->
-        <p>Di solito come ti fai sentire?</p>
-        <div class="btn-group" role="group">
+        <label for="group">Di solito come ti fai sentire?</label>
+        <div class="btn-group" id="group" role="group">
             <input type="radio" class="btn-check" name="sentire" id="sentire1" autocomplete="off">
-            <label class="btn btn-outline-danger" for="sentire1" value="messaggi">Amo i messaggi</label>
+            <label class="btn" for="sentire1" value="messaggi">Amo i messaggi</label>
             <input type="radio" class="btn-check" name="sentire" id="sentire2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="sentire2" value="telefono">Sto ore al telefono</label>
+            <label class="btn" for="sentire2" value="telefono">Sto ore al telefono</label>
             <input type="radio" class="btn-check" name="sentire" id="sentire3" autocomplete="off">
-            <label class="btn btn-outline-danger" for="sentire3" value="videochiamate">Preferisco le videochiamate</label>
+            <label class="btn" for="sentire3" value="videochiamate">Preferisco le videochiamate</label>
             <input type="radio" class="btn-check" name="sentire" id="sentire4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="sentire4" value="noM">Non so messaggiare</label>
+            <label class="btn" for="sentire4" value="noM">Non so messaggiare</label>
             <input type="radio" class="btn-check" name="sentire" id="sentire5" autocomplete="off">
-            <label class="btn btn-outline-danger" for="sentire5" value="vivo">Preferisco vederci dal vivo</label>
+            <label class="btn" for="sentire5" value="vivo">Preferisco vederci dal vivo</label>
         </div>
 
         <!-- Sezione Come esprimi l'amore -->
-        <p>Come esprimi il tuo amore?</p>
-        <div class="btn-group" role="group">
+        <label for="group2">Come esprimi il tuo amore?</label>
+        <div class="btn-group" id="group2" role="group">
             <input type="radio" class="btn-check" name="esprimi" id="esprimi1" autocomplete="off">
-            <label class="btn btn-outline-danger" for="esprimi1" value="gesti">Gesti significativi</label>
+            <label class="btn" for="esprimi1" value="gesti">Gesti significativi</label>
             <input type="radio" class="btn-check" name="esprimi" id="esprimi2" autocomplete="off">
-            <label class="btn btn-outline-danger" for="esprimi2" value="regali">Tanti regali</label>
+            <label class="btn" for="esprimi2" value="regali">Tanti regali</label>
             <input type="radio" class="btn-check" name="esprimi" id="esprimi3" autocomplete="off">
-            <label class="btn btn-outline-danger" for="esprimi3" value="contatto">Contatto fisico</label>
+            <label class="btn" for="esprimi3" value="contatto">Contatto fisico</label>
             <input type="radio" class="btn-check" name="esprimi" id="esprimi4" autocomplete="off">
-            <label class="btn btn-outline-danger" for="esprimi4" value="complimenti">Facendo i complimenti</label>
+            <label class="btn" for="esprimi4" value="complimenti">Facendo i complimenti</label>
         </div>
 
-        <!-- Scelta finale -->
-        <div class="card-body">
-    <h5 class="card-title">Complimenti! Hai quasi completato il tuo profilo Charme!</h5>
-    <p class="card-text">Adesso puoi continuare inserendo le tue caratteristiche estetiche o definire cosa cerchi in una persona:</p>
-            <button type="submit" class="btn">Clicca qui per inserire caratteristiche estetiche</button>
-            <a href="interessi.php"><button type="button" class="btn">Clicca qui per definire cosa cerchi</button></a>
-  </div>
+        <input type="submit" value="Avanti"/>
+      
       
     </form>
 </div>
