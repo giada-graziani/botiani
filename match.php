@@ -16,13 +16,17 @@
         include("conn.php");
         session_start();
         $idU=$_SESSION['idU'];
-        echo"<p id='idU'>$idU</p>";
+        echo"<p id='idU' hidden='hidden'>$idU</p>";
     ?>
     <div class="header">
         <h1>Ecco i posssibili charm che abbiamo trovato per te!</h1>
         <h3>Scorri per trovare il tuo match perfetto!</h3>
     </div>
-    
+
+    <div class="fineCarte" id="noCarte">
+        <h3>Hai visto tutti i profili per oggi!</h3>
+        <button id="ricarica">Ricarica altri profili</button>
+    </div>
     
     <div class="carta-container" id="carteContainer"></div>
     
@@ -34,11 +38,6 @@
         <a href="riassunto.php"><p>Guarda le persone con cui hai fatto match!</p></a>
     </div>
     
-    <div class="fineCarte" id="noCarte">
-        <h3>Hai visto tutti i profili per oggi!</h3>
-        <button id="ricarica">Ricarica altri profili</button>
-
-    </div>
     
     <div class="popUp" id="matchPopup">
         <h2>È un Match!<br>Hai fatto colpo!</h2>
@@ -70,10 +69,10 @@
 </body>
 </html>
 <script type=text/javascript>
-    $(document).ready(function(){
-    // Dati di esempio per i profili
-    let profili=[];
+   $(document).ready(function(){
+    let profili = [];
     let idU = document.getElementById('idU').innerText;
+    
     $.ajax({
         url: "operazioniData.php",
         data: {
@@ -82,219 +81,206 @@
         },
         method: "POST",
         dataType: "json",
-        success: function(profili) {
+        success: function(risposta) {
+            profili = risposta;
+            
             if (profili && Array.isArray(profili) && profili.length > 0) {
                 console.log("Profili recuperati:", profili);
-
-                
+                initApp();
             } else {
                 console.log("Nessun profilo trovato.");
+                document.getElementById('noCarte').style.display = 'block';
             }
-
-            console.log(JSON.stringify(profili));
-
-            let indProfiloInit = 0;
-                    let contaCarte = 0;
-                    
-                    // Generazione casuale di match (per simulazione)
-                    function match() {
-                        return Math.random() > 0.7; // 30% di probabilità di match
-                    }
-                    
-                    // Carica le cards iniziali
-                    function carteIniziali() {
-                        const carteContainer = document.getElementById('carteContainer');
-                        carteContainer.innerHTML = '';
-                        
-                        // Carica le prime 3 cards 
-                        const carteDaCaricare = Math.min(3, profili.length - indProfiloInit);
-                        
-                        if (carteDaCaricare === 0) {
-                            document.getElementById('noCarte').style.display = 'block';
-                            return;
-                        }
-                        
-                        for (let i = 0; i < carteDaCaricare; i++) {
-                            const indiceProfilo = indProfiloInit + i;
-                            if (indiceProfilo >= profili.length) break;
-                            
-                            const profilo = profili[indiceProfilo];
-                            const carta = creaCarta(profilo, i === 0);
-                            carteContainer.appendChild(carta);
-                            contaCarte++;
-                        }
-                        
-                        // Inizializza il dragging sulla prima carta
-                        initTrascinamento(document.querySelector('.carta.active'));
-                    }
-                    
-                    // Crea una carta per un profilo
-                    function creaCarta(profilo, isActive) {
-                        const carta = document.createElement('div');
-                        carta.className = `carta${isActive ? ' active' : ''}`;
-                        carta.innerHTML = `
-                            <img src="./images/${profilo.foto}" alt="${profilo.nome}">
-                            <div class="carta-info">
-                                <h3>${profilo.nome}, ${profilo.eta}</h3>
-                                <p>${profilo.descrizionePersona}</p>
-                            </div>
-                            <div class="overlay like-overlay">LIKE</div>
-                            <div class="overlay dislike-overlay">NOPE</div>
-                        `;
-                        return carta;
-                    }
-                    
-                    // Funzione per inizializzare il trascinamento di una carta
-                    function initTrascinamento(carta) {
-                        if (!carta) return;
-                        
-                        let startX, currentX = 0;
-                        const likeOverlay = carta.querySelector('.like-overlay');
-                        const dislikeOverlay = carta.querySelector('.dislike-overlay');
-                        
-                        function movimentoIniziale(event) {
-                            // Supporto per touch e mouse
-                            startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-                            carta.style.transition = '';
-                        }
-                        
-                        function trascinamento(event) {
-                            if (!startX) return;
-                            
-                            // Calcola spostamento
-                            const pageX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-                            currentX = pageX - startX;
-                            
-                            // Applica la trasformazione
-                            const rotazione = currentX / 10;
-                            carta.style.transform = `translateX(${currentX}px) rotate(${rotazione}deg)`;
-                            
-                            // Gestisci overlay
-                            if (currentX > 0) {
-                                likeOverlay.style.opacity = Math.min(currentX / 100, 1);
-                                dislikeOverlay.style.opacity = 0;
-                            } else if (currentX < 0) {
-                                dislikeOverlay.style.opacity = Math.min(Math.abs(currentX) / 100, 1);
-                                likeOverlay.style.opacity = 0;
-                            } else {
-                                likeOverlay.style.opacity = 0;
-                                dislikeOverlay.style.opacity = 0;
-                            }
-                        }
-                        
-                        function movimentoFinale() {
-                            if (!startX) return;
-                            
-                            carta.style.transition = 'transform 0.5s';
-                            
-                            if (currentX > 100) {
-                                // Like
-                                swipeCard(carta, 'right');
-                            } else if (currentX < -100) {
-                                // Dislike
-                                swipeCard(carta, 'left');
-                            } else {
-                                // Ritorna alla posizione originale
-                                carta.style.transform = '';
-                                likeOverlay.style.opacity = 0;
-                                dislikeOverlay.style.opacity = 0;
-                            }
-                            
-                            startX = null;
-                        }
-                        
-                        // Event listeners per mouse
-                        carta.addEventListener('mousedown', movimentoIniziale);
-                        document.addEventListener('mousemove', trascinamento);
-                        document.addEventListener('mouseup', movimentoFinale);
-                        
-                        
-                    }
-                    
-                    // Funzione per scorrere una carta (destra = like, sinistra = dislike)
-                    function swipeCard(carta, direction) {
-                        const isLike = direction === 'right';
-                        const translateX = isLike ? 1000 : -1000;
-                        const rotazione = isLike ? 30 : -30;
-                        
-                        carta.style.transform = `translateX(${translateX}px) rotate(${rotazione}deg)`;
-                        
-                        // Se è un like, controlla se c'è un match
-                        if (isLike && match()) {
-                            showMatch(profili[indProfiloInit]);
-                        }
-                        
-                        // Dopo l'animazione, rimuovi la carta e aggiorna
-                        setTimeout(() => {
-                            carta.remove();
-                            contaCarte--;
-                            indProfiloInit++;
-                            
-                            // Se non ci sono più cards, carica altre
-                            if (contaCarte === 0) {
-                                carteIniziali();
-                            } else {
-                                // Altrimenti attiva la prossima carta
-                                const nextCard = document.querySelector('.carta:not(.active)');
-                                if (nextCard) {
-                                    nextCard.classList.add('active');
-                                    initTrascinamento(nextCard);
-                                }
-                            }
-                        }, 500);
-                    }
-                    
-                    // Mostra il popup di match
-                    function showMatch(profilo) {
-                        const matchPopup = document.getElementById('matchPopup');
-                        const fotoProfilo = document.getElementById('fotoProfilo');
-
-                        // Imposta l'immagine del profilo con cui hai fatto match
-                        fotoProfilo.innerHTML = `<img src="./images/${profilo.foto}" alt="${profilo.nome}">`;
-                        
-                        // Mostra il popup
-                        matchPopup.classList.add('active');
-                        //console.log("ID profilo match:", profilo.id_utenti);
-                        $.ajax({
-                            url: 'operazioniData.php',
-                            method: 'POST',
-                            data: {
-                                functionname: 'inserisciMatch',
-                                idU: idU,
-                                idProfiloMatch: profilo.id_utenti
-                            },
-                            success: function(result){
-                                
-                                    window.location.href="match.php";                        
-                            }
-                        });
-                    }
-                    
-                    // Event listeners per i pulsanti
-                    document.getElementById('likeBtn').addEventListener('click', () => {
-                        const activeCard = document.querySelector('.carta.active');
-                        if (activeCard) swipeCard(activeCard, 'right');
-                    });
-                    
-                    document.getElementById('dislikeBtn').addEventListener('click', () => {
-                        const activeCard = document.querySelector('.carta.active');
-                        if (activeCard) swipeCard(activeCard, 'left');
-                    });
-                    
-                    document.getElementById('continua').addEventListener('click', () => {
-                        document.getElementById('matchPopup').classList.remove('active');
-                    });
-                    
-                    document.getElementById('ricarica').addEventListener('click', () => {
-                        indiceProfilo = 0;
-                        document.getElementById('noCarte').style.display = 'none';
-                        carteIniziali();
-                    });
-                    
-                    // Inizializza l'app
-                    carteIniziali();
-
-                } 
-    }) 
+        }
+    });
+    
+    function initApp() {
+        // Il container dove mettiamo le carte
+        const carteContainer = document.getElementById('carteContainer');
+        // Indice del profilo attualmente visibile
+        let indiceProfiloAttuale = 0;
+        
+        // Funzione per creare tutte le carte contemporaneamente
+        function creaTutteLeCarte() {
+            // Svuota il container
+            carteContainer.innerHTML = '';
+            
+            if (indiceProfiloAttuale >= profili.length) {
+                // Non ci sono più profili da mostrare
+                document.getElementById('noCarte').style.display = 'block';
+                document.getElementById('dislikeBtn').style.display = 'none';
+                document.getElementById('likeBtn').style.display = 'none';
+                carteContainer.style.display = 'none';
+                return;
+            }
+            
+            // Mostra al massimo 3 carte alla volta, se disponibili
+            const numCarteVisibili = Math.min(3, profili.length - indiceProfiloAttuale);
+            
+            // Crea le carte in ordine inverso così che la prima sia in cima
+            for (let i = numCarteVisibili - 1; i >= 0; i--) {
+                const profiloIndex = indiceProfiloAttuale + i;
+                const profilo = profili[profiloIndex];
+                
+                // Crea la carta
+                const carta = document.createElement('div');
+                carta.className = 'carta' + (i === 0 ? ' active' : '');
+                carta.dataset.profiloIndex = profiloIndex;
+                
+                carta.innerHTML = `
+                    <img src="./images/${profilo.foto}" alt="${profilo.nome}">
+                    <div class="carta-info">
+                        <h3>${profilo.nome}, ${profilo.eta}</h3>
+                        <p>${profilo.descrizionePersona}</p>
+                    </div>
+                    <div class="overlay like-overlay">LIKE</div>
+                    <div class="overlay dislike-overlay">NOPE</div>
+                `;
+                
+                carteContainer.appendChild(carta);
+            }
+            
+            // Inizializza il dragging solo sulla carta attiva (la prima)
+            initTrascinamento(document.querySelector('.carta.active'));
+        }
+        
+        // Funzione per gestire il trascinamento
+        function initTrascinamento(carta) {
+            if (!carta) return;
+            
+            let startX, currentX = 0;
+            const likeOverlay = carta.querySelector('.like-overlay');
+            const dislikeOverlay = carta.querySelector('.dislike-overlay');
+            
+            function movimentoIniziale(event) {
+                startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                carta.style.transition = '';
+            }
+            
+            function trascinamento(event) {
+                if (!startX) return;
+                
+                const pageX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                currentX = pageX - startX;
+                
+                // Applica trasformazione
+                const rotazione = currentX / 10;
+                carta.style.transform = `translateX(${currentX}px) rotate(${rotazione}deg)`;
+                
+                // Gestisci overlay
+                if (currentX > 0) {
+                    likeOverlay.style.opacity = Math.min(currentX / 100, 1);
+                    dislikeOverlay.style.opacity = 0;
+                } else if (currentX < 0) {
+                    dislikeOverlay.style.opacity = Math.min(Math.abs(currentX) / 100, 1);
+                    likeOverlay.style.opacity = 0;
+                } else {
+                    likeOverlay.style.opacity = 0;
+                    dislikeOverlay.style.opacity = 0;
+                }
+            }
+            
+            function movimentoFinale() {
+                if (!startX) return;
+                
+                carta.style.transition = 'transform 0.5s';
+                
+                if (currentX > 100) {
+                    // Like
+                    elaboraSwipe(carta, 'right');
+                } else if (currentX < -100) {
+                    // Dislike
+                    elaboraSwipe(carta, 'left');
+                } else {
+                    // Ritorna alla posizione originale
+                    carta.style.transform = '';
+                    likeOverlay.style.opacity = 0;
+                    dislikeOverlay.style.opacity = 0;
+                }
+                
+                startX = null;
+            }
+            
+            // Event listeners
+            carta.addEventListener('mousedown', movimentoIniziale);
+            document.addEventListener('mousemove', trascinamento);
+            document.addEventListener('mouseup', movimentoFinale);
+        }
+        
+        // Funzione per gestire uno swipe (like o dislike)
+        function elaboraSwipe(carta, direzione) {
+            const isLike = direzione === 'right';
+            const translateX = isLike ? 1000 : -1000;
+            const rotazione = isLike ? 30 : -30;
+            
+            carta.style.transform = `translateX(${translateX}px) rotate(${rotazione}deg)`;
+            
+            // Ottieni l'indice del profilo
+            const profiloIndex = parseInt(carta.dataset.profiloIndex);
+            const profilo = profili[profiloIndex];
+            
+            // Se è un like, verifica se c'è un match
+            if (isLike && Math.random() > 0.7) {  // 30% probabilità di match
+                mostraMatch(profilo);
+            }
+            
+            // Dopo l'animazione, passa alla carta successiva
+            setTimeout(() => {
+                // Incrementa l'indice del profilo attuale
+                indiceProfiloAttuale++;
+                
+                // Ricarica tutte le carte
+                creaTutteLeCarte();
+            }, 300);
+        }
+        
+        // Funzione per mostrare il popup di match
+        function mostraMatch(profilo) {
+            const matchPopup = document.getElementById('matchPopup');
+            const fotoProfilo = document.getElementById('fotoProfilo');
+            
+            // Imposta l'immagine del profilo con cui hai fatto match
+            fotoProfilo.innerHTML = `<img src="./images/${profilo.foto}" alt="${profilo.nome}">`;
+            
+            // Mostra il popup
+            matchPopup.classList.add('active');
+            
+            // Salva il match nel database
+            $.ajax({
+                url: 'operazioniData.php',
+                method: 'POST',
+                data: {
+                    functionname: 'inserisciMatch',
+                    idU: idU,
+                    idProfiloMatch: profilo.id_utenti
+                },
+                success: function(result) {
+                    // Gestione del risultato se necessario
+                }
+            });
+        }
+        
+        // Event listeners per i pulsanti
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            const activeCard = document.querySelector('.carta.active');
+            if (activeCard) elaboraSwipe(activeCard, 'right');
+        });
+        
+        document.getElementById('dislikeBtn').addEventListener('click', () => {
+            const activeCard = document.querySelector('.carta.active');
+            if (activeCard) elaboraSwipe(activeCard, 'left');
+        });
+        
+        document.getElementById('continua').addEventListener('click', () => {
+            document.getElementById('matchPopup').classList.remove('active');
+        });
+        
+        document.getElementById('ricarica').addEventListener('click', () => {
+            window.location.href = "match.php";
+        });
+        
+        // Inizializza l'app
+        creaTutteLeCarte();
+    }
 });
 </script>
