@@ -85,6 +85,7 @@ document.getElementById("cognomi").addEventListener("focus", function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Riferimento all'input e al messaggio di errore
     const telefonoInput = document.getElementById('telefoni');
+    const etaInput = document.getElementById('age');
     
     if (telefonoInput) {
         // Impedisci l'inserimento di caratteri non numerici
@@ -97,18 +98,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault(); // Impedisci l'inserimento
             }
         });
+    }
     
-        /*
-        // Rimuovi eventuali caratteri non numerici in caso di incolla
-        telefonoInput.addEventListener('input', function(e) {
-            // Rimuovi tutti i caratteri non numerici
-            this.value = this.value.replace(/[^0-9]/g, '');
-            
-            // Limita a 10 caratteri (per sicurezza aggiuntiva)
-            if (this.value.length > 10) {
-                this.value = this.value.slice(0, 10);
-            }
-    });*/
+    if (etaInput) {
+        // Controlla il numero quando l'utente modifica il valore di etaInput
+        etaInput.addEventListener('change', function() {
+            //il valore dell'input(this.value) è a base decimale
+            const eta = parseInt(this.value, 10);
+            // isNaN(eta) controlla se il valore non è un numero
+        if (isNaN(eta) || eta < 18 || eta > 99) {
+            alert('L\'età deve essere compresa tra 18 e 99');
+            this.value = ''; // Cancella il valore non valido
+        }
+        });
+    
 
     }
 });

@@ -1,3 +1,78 @@
+create database incontri;
+use incontri;
+
+CREATE TABLE utenti (
+id_utenti INT NOT NULL PRIMARY KEY auto_increment,
+cognome varchar(25) NOT NULL,
+nome varchar(30) NOT NULL,
+email varchar(30) NOT NULL,
+eta int not NULL CHECK(eta>=18),
+password varchar(40) not null,
+num_telefono char(10) not null,
+sesso varchar(30) not null
+);
+
+
+
+CREATE TABLE qualita (
+idQualita int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+sport varchar(30) not null,
+carattere varchar(30) not null,
+animali char(2) not null,
+bevi varchar(30) not null,
+fumo varchar(30) not null,
+zodiaco varchar(30) not null,
+descrizionePersona varchar(50) not null
+
+);
+
+create table carattaggiuntive(
+idCaratt int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+capelli varchar(30) not null,
+occhi varchar(30) not null,
+altezza varchar(30) not null,
+stile varchar(30) not null
+);
+
+create table interessi(
+idInteressi int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+genere varchar(30) not null,
+relazione varchar(30) not null,
+caratterePartner varchar(30) not null,
+capelli varchar(30) not null,
+occhi varchar(30) not null,
+altezza varchar(30) not null,
+stile varchar(30) not null
+);
+
+create table hobby(
+idHobby int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+descrizione varchar(30) not null
+);
+
+CREATE TABLE matchUtenti(
+idMatch int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+id_utenteMatch int NOT NULL,
+FOREIGN KEY (id_utenteMatch) REFERENCES utenti(id_utenti)
+);
+
+create table foto(
+idFoto int PRIMARY KEY auto_increment,
+id_utenti INT NOT NULL,
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+foto varchar(5000) 
+);
+
 INSERT INTO utenti (cognome, nome, email, eta, password, num_telefono, sesso) VALUES 
 ('Rossi', 'Luca', 'luca.rossi@gmail.com', 28, '1', '3491234567', 'Maschio'),
 ('Bianchi', 'Giulia', 'giulia.bianchi@yahoo.com', 24, '2', '3209876543', 'Femmina'),
@@ -95,20 +170,20 @@ INSERT INTO hobby (id_utenti, descrizione) VALUES
 (17, 'Arrampicata');
 
 INSERT INTO foto (id_utenti, foto) VALUES
-(1, '1.jpeg'),
+(1, '1.jpg'),
 (2, '2.jpeg'),
 (3, '3.jpeg'),
-(4, '4.jpeg'),
-(5,'5.jpeg'),
+(4, '4.png'),
+(5,'5.png'),
 (6, '6.jpg'),
 (7, '7.jpeg'),
-(8, '8.jpg'),
-(9, '9.jpg'),
-(10, '10.jpg'),
+(8, '8.png'),
+(9, '9.jpeg'),
+(10, '10.jpeg'),
 (11, '11.png'),
-(12, '12.jpg'),
-(13, '13.jpg'),
-(14, '14.jpg'),
+(12, '12.jpeg'),
+(13, '13.jpeg'),
+(14, '14.jpeg'),
 (15, '15.jpg'),
 (16, '16.jpg'),
 (17, '17.jpg');

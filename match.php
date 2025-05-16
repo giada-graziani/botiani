@@ -19,7 +19,7 @@
         echo"<p id='idU' hidden='hidden'>$idU</p>";
     ?>
     <div class="header">
-        <h1>Ecco i posssibili charm che abbiamo trovato per te!</h1>
+        <h1 id="h1Match">Ecco i posssibili charm che abbiamo trovato per te!</h1>
         <h3>Scorri per trovare il tuo match perfetto!</h3>
     </div>
 
@@ -35,7 +35,7 @@
         <button class="bottone like" id="likeBtn">♥</button>
     </div>
     <div>
-        <a href="riassunto.php"><p>Guarda le persone con cui hai fatto match!</p></a>
+        <a href="riassunto.php" id="aMatch"><p>Guarda le persone con cui hai fatto match!</p></a>
     </div>
     
     

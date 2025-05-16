@@ -87,12 +87,7 @@ a {
     transition: all 0.3s ease;
     position: relative;
 }
- 
-a p {
-    font-size: 1rem;
-    position: relative;
-    padding-bottom: 2px;
-}
+
  
 a p:after {
     content: '';
@@ -304,8 +299,13 @@ input[type="submit"]:hover {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#h1Match{
+    color:bisque;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 .header h3 {
+    color:rgba(248, 248, 248, 0.747);
     font-weight: 400;
     font-size: 1.2rem;
 }
@@ -512,8 +512,15 @@ input[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/*ESTETICA*/
+#aMatch {
+    color:rgba(248, 248, 248, 0.747);
+}
+ 
+#aMatch p:after {
+    background: rgba(248, 248, 248, 0.747);
+}
 
+/*ESTETICA*/
 .fotoContainer {
     position: relative;
     width: 150px;

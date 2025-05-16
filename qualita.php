@@ -41,23 +41,22 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 input[type="text"]{
-    background-color:rgb(225, 175, 177);
-    border:none;
-    font-style:italic;
     width: 100%;
     padding: 10px;
-        margin: 5px 0;
-    border-radius: 5px;
-    font-size: 1rem;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
     
 }
 .input-group-text{
-    background-color: #db687b;
+    background-color: rgb(225, 175, 177); ;
     border:none;
-    color:white;
+    color:#6e446b;
 }
 .form-select{
-    background-color:rgb(225, 175, 177); 
+    background-color: rgb(236, 194, 195); ;
     border:none;
     color:#6e446b;
 }
