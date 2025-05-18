@@ -34,23 +34,6 @@ body > .container{
     animation: scaleIn 0.8s ease-out;
 }
 
-<<<<<<< HEAD
-=======
-.btn-group .btn{
-    border-radius: 25px;
-    margin: 5px;
-    font-size: 15px;
-    text-align:center;
-    transition: all 0.3s ease;
-    
-}
-.btn-group .btn:hover {
-    background-color: #ff416c;
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 p{
     font-size:13px;
     text-align:center;
@@ -169,7 +152,6 @@ input[type="submit"]:hover {
         <label for="gr">Quale di questi hobby ti piace di più?</label>
         <div class="btn-group" id="gr" role="group">
             <input type="radio" class="btn-check" name="hobby" id="hobby1" autocomplete="off">
-<<<<<<< HEAD
             <label class="btn" for="hobby1" value="dipingo">Dipingere</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby2" autocomplete="off">
             <label class="btn" for="hobby2" value="canto">Cantare</label>
@@ -181,19 +163,6 @@ input[type="submit"]:hover {
             <label class="btn" for="hobby6" value="dormo">Dormire</label>
             <input type="radio" class="btn-check" name="hobby" id="hobby7" autocomplete="off">
             <label class="btn" for="hobby6" value="dormo">Leggere</label>
-=======
-            <label class="btn" for="hobby1" value="dipingo">Dipingo</label>
-            <input type="radio" class="btn-check" name="hobby" id="hobby2" autocomplete="off">
-            <label class="btn" for="hobby2" value="canto">Canto</label>
-            <input type="radio" class="btn-check" name="hobby" id="hobby3" autocomplete="off">
-            <label class="btn" for="hobby3" value="ballo">Ballo</label>
-            <input type="radio" class="btn-check" name="hobby" id="hobby4" autocomplete="off">
-            <label class="btn" for="hobby4" value="recito">Recito</label>
-            <input type="radio" class="btn-check" name="hobby" id="hobby5" autocomplete="off">
-            <label class="btn" for="hobby5" value="tv">Guardo la tv</label>
-            <input type="radio" class="btn-check" name="hobby" id="hobby6" autocomplete="off">
-            <label class="btn" for="hobby6" value="dormo">Dormo</label>
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
         </div>
 
         <!-- Sezione Come ti fai sentire -->

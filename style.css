@@ -88,16 +88,12 @@ a {
     position: relative;
 }
 
-<<<<<<< HEAD
 a p {
     font-size: 1rem;
     position: relative;
     padding-bottom: 2px;
 }
 
-=======
- 
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 a p:after {
     content: '';
     position: absolute;
@@ -108,11 +104,7 @@ a p:after {
     bottom: 0;
     transition: width 0.3s ease;
 }
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 a:hover p:after {
     width: 100%;
 }
@@ -536,13 +528,8 @@ input[type="submit"]:hover {
 /*ESTETICA*/
 .fotoContainer {
     position: relative;
-<<<<<<< HEAD
     width: 175px;
     height: 175px;
-=======
-    width: 150px;
-    height: 150px;
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
     border-radius: 50%;
     border: 2px dashed #ccc;
     display: flex;
@@ -551,19 +538,12 @@ input[type="submit"]:hover {
     overflow: hidden;
     cursor: pointer;
     background-color: #f9f9f9;
-<<<<<<< HEAD
     margin: auto;
-=======
-    margin-bottom: 10px;
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
   }
 
   #fileInput {
     position: absolute;
-<<<<<<< HEAD
     margin:auto;
-=======
->>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
     width: 100%;
     height: 100%;
     opacity: 0;
