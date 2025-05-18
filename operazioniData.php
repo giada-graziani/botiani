@@ -120,6 +120,7 @@ elseif($nomeFunzione=="inserisciMatch"){
     else{
         echo json_encode(array('esito' => 'errore', 'messaggio' =>'match non inserito')); 
     }
+<<<<<<< HEAD
 }
 elseif($nomeFunzione=="controlloProfilo"){
     $email=$_POST["email"];
@@ -216,5 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['image']) && isset($_P
     echo json_encode($response);
     exit;
 }
+=======
+    
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 }
 ?>

@@ -17,7 +17,11 @@ sesso varchar(30) not null
 CREATE TABLE qualita (
 idQualita int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 sport varchar(30) not null,
 carattere varchar(30) not null,
 animali char(2) not null,
@@ -31,7 +35,11 @@ descrizionePersona varchar(50) not null
 create table carattaggiuntive(
 idCaratt int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 capelli varchar(30) not null,
 occhi varchar(30) not null,
 altezza varchar(30) not null,
@@ -41,7 +49,11 @@ stile varchar(30) not null
 create table interessi(
 idInteressi int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 genere varchar(30) not null,
 relazione varchar(30) not null,
 caratterePartner varchar(30) not null,
@@ -54,26 +66,41 @@ stile varchar(30) not null
 create table hobby(
 idHobby int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 descrizione varchar(30) not null
 );
 
 CREATE TABLE matchUtenti(
 idMatch int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
 id_utenteMatch int NOT NULL,
 FOREIGN KEY (id_utenteMatch) REFERENCES utenti(id_utenti) ON DELETE CASCADE
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+id_utenteMatch int NOT NULL,
+FOREIGN KEY (id_utenteMatch) REFERENCES utenti(id_utenti)
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 );
 
 create table foto(
 idFoto int PRIMARY KEY auto_increment,
 id_utenti INT NOT NULL,
+<<<<<<< HEAD
 FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti) ON DELETE CASCADE,
+=======
+FOREIGN KEY (id_utenti) REFERENCES utenti(id_utenti),
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 foto varchar(5000) 
 );
 
 INSERT INTO utenti (cognome, nome, email, eta, password, num_telefono, sesso) VALUES 
+<<<<<<< HEAD
 ('Rossi', 'Luca', 'luca.rossi@gmail.com', 28, '1', '3491234567', 'uomo'),
 ('Bianchi', 'Giulia', 'giulia.bianchi@yahoo.com', 24, '2', '3209876543', 'donna'),
 ('Verdi', 'Marco', 'marco.verdi@hotmail.com', 33, '3', '3331122334', 'uomo'),
@@ -91,6 +118,25 @@ INSERT INTO utenti (cognome, nome, email, eta, password, num_telefono, sesso) VA
 ('De Luca', 'Matteo', 'matteo.deluca@hotmail.com', 36, '15', '3216655447', 'uomo'),
 ('Barbieri', 'Ilaria', 'ilaria.barbieri@gmail.com', 21, '16', '3478899003', 'donna'),
 ('Lombardi', 'Stefano', 'stefano.lombardi@yahoo.com', 38, '17', '3301122443', 'uomo');
+=======
+('Rossi', 'Luca', 'luca.rossi@gmail.com', 28, '1', '3491234567', 'Maschio'),
+('Bianchi', 'Giulia', 'giulia.bianchi@yahoo.com', 24, '2', '3209876543', 'Femmina'),
+('Verdi', 'Marco', 'marco.verdi@hotmail.com', 33, '3', '3331122334', 'Maschio'),
+('Esposito', 'Sara', 'sara.esposito@gmail.com', 27, '4', '3887766554', 'Femmina'),
+('Romano', 'Andrea', 'andrea.romano@yahoo.com', 31, '5', '3465544332', 'Maschio'),
+('Ricci', 'Chiara', 'chiara.ricci@hotmail.com', 22, '6', '3278899001', 'Femmina'),
+('Marino', 'Francesco', 'francesco.marino@gmail.com', 35, '7', '3342211335', 'Maschio'),
+('Greco', 'Martina', 'martina.greco@yahoo.com', 29, '8', '3487700112', 'Femmina'),
+('Galli', 'Alessandro', 'alessandro.galli@hotmail.com', 26, '9', '3661122009', 'Maschio'),
+('Costa', 'Elisa', 'elisa.costa@gmail.com', 34, '10', '3359988771', 'Femmina'),
+('Fontana', 'Davide', 'davide.fontana@yahoo.com', 30, '11', '3294433221', 'Maschio'),
+('Ferri', 'Valentina', 'valentina.ferri@hotmail.com', 23, '12', '3225566778', 'Femmina'),
+('Conti', 'Simone', 'simone.conti@gmail.com', 32, '13', '3901122334', 'Maschio'),
+('Moretti', 'Alessia', 'alessia.moretti@yahoo.com', 25, '14', '3367788990', 'Femmina'),
+('De Luca', 'Matteo', 'matteo.deluca@hotmail.com', 36, '15', '3216655447', 'Maschio'),
+('Barbieri', 'Ilaria', 'ilaria.barbieri@gmail.com', 21, '16', '3478899003', 'Femmina'),
+('Lombardi', 'Stefano', 'stefano.lombardi@yahoo.com', 38, '17', '3301122443', 'Maschio');
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 
 
 INSERT INTO qualita (id_utenti, sport, carattere, animali, bevi, fumo, zodiaco, descrizionePersona) VALUES
@@ -132,6 +178,7 @@ INSERT INTO carattAggiuntive (id_utenti, capelli, occhi, altezza, stile) VALUES
 (17, 'Grigi', 'Marroni', '173', 'Casual');
 
 INSERT INTO interessi (id_utenti, genere, relazione, caratterePartner, capelli, occhi, altezza, stile) VALUES
+<<<<<<< HEAD
 (1, 'donna', 'Seria', 'Dolce', 'Castani', 'Verdi', '160-170', 'Casual'),
 (2, 'uomo', 'Convivenza', 'Sicuro', 'Neri', 'Marroni', '170-180', 'Sportivo'),
 (3, 'donna', 'Amicizia', 'Solare', 'Biondi', 'Verdi', '165-175', 'Elegante'),
@@ -169,6 +216,44 @@ INSERT INTO hobby (id_utenti, descrizione, sentire, esprimereAm) VALUES
 (16, 'Giardinaggio', 'serenità', 'cura della vita'),
 (17, 'Fare volontariato', 'empatia', 'aiutare con il cuore');
 
+=======
+(1, 'Femmina', 'Seria', 'Dolce', 'Castani', 'Verdi', '160-170', 'Casual'),
+(2, 'Maschio', 'Convivenza', 'Sicuro', 'Neri', 'Marroni', '170-180', 'Sportivo'),
+(3, 'Femmina', 'Amicizia', 'Solare', 'Biondi', 'Verdi', '165-175', 'Elegante'),
+(4, 'Maschio', 'Relazione seria', 'Protettivo', 'Castani', 'Azzurri', '175-185', 'Classico'),
+(5, 'Femmina', 'Senza impegno', 'Indipendente', 'Rossi', 'Castani', '160-170', 'Urban'),
+(6, 'Maschio', 'Amicizia', 'Divertente', 'Castani', 'Marroni', '170-180', 'Casual'),
+(7, 'Femmina', 'Seria', 'Creativa', 'Biondi', 'Verdi', '165-170', 'Chic'),
+(8, 'Maschio', 'Convivenza', 'Affettuoso', 'Neri', 'Castani', '175-185', 'Minimal'),
+(9, 'Femmina', 'Relazione seria', 'Empatica', 'Castani', 'Verdi', '160-170', 'Elegante'),
+(10, 'Maschio', 'Senza impegno', 'Avventuroso', 'Biondi', 'Azzurri', '180-190', 'Sportivo'),
+(11, 'Femmina', 'Seria', 'Romantica', 'Rossi', 'Castani', '165-175', 'Chic'),
+(12, 'Maschio', 'Relazione', 'Sicura', 'Castani', 'Marroni', '170-180', 'Casual'),
+(13, 'Femmina', 'Amicizia', 'Timida', 'Neri', 'Verdi', '160-170', 'Classico'),
+(14, 'Maschio', 'Seria', 'Ambiziosa', 'Biondi', 'Azzurri', '175-185', 'Urban'),
+(15, 'Femmina', 'Senza impegno', 'Creativa', 'Castani', 'Verdi', '165-175', 'Elegante'),
+(16, 'Maschio', 'Relazione', 'Ironica', 'Neri', 'Marroni', '180-185', 'Streetwear'),
+(17, 'Femmina', 'Seria', 'Dolce', 'Biondi', 'Azzurri', '165-175', 'Casual');
+
+INSERT INTO hobby (id_utenti, descrizione) VALUES
+(1, 'Calcio'),
+(2, 'Lettura'),
+(3, 'Pales'),
+(4, 'Fotografia'),
+(5, 'Pittura'),
+(6, 'Enologia'),
+(7, 'Cucina'),
+(8, 'Arrampicata'),
+(9, 'Calcio'),
+(10, 'Lettura'),
+(11, 'Pales'),
+(12, 'Fotografia'),
+(13, 'Pittura'),
+(14, 'Enologia'),
+(15, 'Cucina'),
+(16, 'Arrampicata'),
+(17, 'Arrampicata');
+>>>>>>> 5c0ea5892d0f7acdd016fafc5b9bb9daf07fbb6d
 
 INSERT INTO foto (id_utenti, foto) VALUES
 (1, '1.jpg'),
