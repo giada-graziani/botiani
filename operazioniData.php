@@ -120,6 +120,101 @@ elseif($nomeFunzione=="inserisciMatch"){
     else{
         echo json_encode(array('esito' => 'errore', 'messaggio' =>'match non inserito')); 
     }
+}
+elseif($nomeFunzione=="controlloProfilo"){
+    $email=$_POST["email"];
+    $q ="SELECT 
+                *
+        FROM
+            utenti
+        WHERE 
+            email='$email'";
+    $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
+    if(mysqli_num_rows($ris)>0){
+        echo json_encode(array('esito' => 'successo')); 
+    }
+    else{
+         echo json_encode(array('esito' => 'errore')); 
+    }
+}
+elseif($nomeFunzione=="inserimentoFoto"){
+    // Verifica se è una richiesta POST
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['image']) && isset($_POST['idUtente'])) {
+    // Specifica la cartella di destinazione
+    $targetDir = "images/"; // Assicurati che questa cartella esista e sia scrivibile
+    $file = $_FILES['image']['name'];
+    $targetFile = $targetDir . basename($file);
+    $uploadOk = 1;
+    $idU = $_POST['idUtente'];
+    $response = array();
+
+    // Controlla se il file è un'immagine
+    $check = getimagesize($_FILES['image']['tmp_name']);
+    if ($check === false) {
+        $response['success'] = false;
+        $response['message'] = "Il file non è un'immagine.";
+        $uploadOk = 0;
+    } else {
+        $uploadOk = 1;
+        
+        // Controlla se il file esiste già
+        if (file_exists($targetFile) || $check["mime"] != "image/jpeg") {
+            $response['success'] = false;
+            $response['message'] = "Spiacente, il file esiste già o non è in formato JPEG.";
+            $uploadOk = 0;
+        }
+
+        // Controlla la dimensione del file
+        if ($_FILES['image']['size'] > 500000) { // Limite di 500KB
+            $response['success'] = false;
+            $response['message'] = "Spiacente, il file è troppo grande.";
+            $uploadOk = 0;
+        }
+
+        // Consenti solo determinati formati di file
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $response['success'] = false;
+            $response['message'] = "Spiacente, solo file JPG, JPEG, PNG e GIF sono consentiti.";
+            $uploadOk = 0;
+        }
+
+        // Controlla se $uploadOk è impostato su 0 a causa di un errore
+        if ($uploadOk != 0) {
+            $q = "INSERT INTO foto (id_utenti, foto) 
+                  VALUES ('$idU', '$file')";
+            $ris = mysqli_query($conn, $q);
+            
+            if ($ris) {
+                // Se tutto è a posto, prova a caricare il file
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                    $response['success'] = true;
+                    $response['message'] = "Il file è stato caricato con successo.";
+                } else {
+                    $response['success'] = false;
+                    $response['message'] = "Spiacente, si è verificato un errore durante il caricamento del tuo file.";
+                }
+            } else {
+                $response['success'] = false;
+                $response['message'] = "Non è stato possibile inserire i dati nel database. " . mysqli_error($conn);
+            }
+        }
+    }
     
+    // Invia la risposta come JSON
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+} else {
+    // Se non è una richiesta POST valida
+    $response = array(
+        'success' => false,
+        'message' => 'Richiesta non valida'
+    );
+    
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+}
 }
 ?>

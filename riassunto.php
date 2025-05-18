@@ -15,48 +15,119 @@
     width: 600px;
     margin: 0 auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
 }
+body > .container{
+    background-color: rgba(248, 248, 248, 0.747);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 30px 20px 30px 20px;
+    max-width: 600px;
+    text-align: center;
+    animation: scaleIn 0.8s ease-out;
+}
+
 body {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-        h1 {
-            text-align: center;
-            color: rgb(132, 11, 15);
-            padding-bottom:10px;
-            margin-bottom:25px;
-        }
-    
-        .card{
-            background: #ff9a9e;
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    /*color: #722c44;*/
+    color:white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align:center;
+}
+
+ .card{
+            background: transparent;
             margin:15px 25px 25px 15px;
             text-align:left;
-        }
-       h5{
+            border:none;
+    }
+h5{
         
         font-size:28px;
         color:rgb(162, 0, 5);
-       }
-      .utente{
+    }
+
+.utente{
           height:80px;
           padding-top:15px;
           text-align:left;
           width:500px;
       }
-      .footer{
+
+.footer{
           text-align:center;
           padding-top:20px;
       }
+
+input[type="submit"] {
+    background-color:#db687b;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
+    margin: 10px 0;
+}
+input[type="submit"]:hover {
+    background-color: #e94e68;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
+}
+.foto{
+    text-align:left;
+    width: 250px; 
+  height: 250px;
+    overflow: hidden;
+     border-radius: 50%;
+       background-color: #f0f0f0;
+}
+a{
+    background-color:#db687b;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
+    margin: 10px 0;
+    text-decoration:none;
+    text-align:center;
+    
+}
+a:hover {
+    background-color: #e94e68;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
+}
+.indietro{
+    text-align:center;
+}
    </style> 
-<body>
+<body> 
+    <form action='profilo.php' method='POST'>
     <div>
-<form action='profilo.php' method='POST'>
-    <h1>Ecco i tuoi match</h1>
+
+    <h1>Ecco i tuoi match 💘</h1>
+   
 
     <?php
     include("conn.php");
@@ -71,33 +142,41 @@ body {
     
     if($risu->num_rows>0){
        echo "<div class='row row-cols-1 row-cols-md-3 g-4'>";
+
         while($row=mysqli_fetch_array($risu, MYSQLI_ASSOC)){
-     
-        echo "<div class='card' style='width: 15rem;'>";
+
+    echo "<div class='card' style='width: 15rem;'>";
        echo "<div class='card-body'>";
-       echo "<div style='height:300px;'>";
-       echo "<img src='./images/$row[foto]' style='width:100%;height:100%;' class='card-img-top'>";
+
+       echo "<div class=foto>";
+       echo "<img src='./images/$row[foto]' class='card-img-top'>";
        echo "</div>";
+
        echo "<div class='utente'>";
-       echo "<h5 class='card-title'>".$row['nome']." ".$row['cognome']."</h5>";
-       echo "<p class='card-text'style='font-weight:bold;'> eta'<span style='font-weight:normal;'>: ".$row['eta']."</span></p>";
+       echo "<h5 class='card-title' style='color:white;'>".$row['nome']." ".$row['cognome']."</h5>";
+       echo "<p class='card-text'style='font-weight:bold;color:white'> eta'<span style='font-weight:normal;'>: ".$row['eta']."</span></p>";
        echo "</div>";
-       echo "<div class='footer' name='idUtenteMatch'>";
-       echo "<input type='submit' value='$row[id_utenteMatch]'>Visualizza profilo</>";
+
+
+       echo "<div class='footer'>";
+       echo "<input type='hidden' name='id_utenteMatch' value='".$row['id_utenteMatch']."'>";
+       echo "<input type='submit' value='Visualizza profilo'/>";
        echo "</div>";
        echo "</div>";
        echo "</div>";
-       
+   
         }
+       
         echo "</div>";
     }
     ?>
-   
+
   </div>
+  <div class="indietro">
+  <a href="./match.php">Torna a fare match</a>
 </div>
 </form>
 
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

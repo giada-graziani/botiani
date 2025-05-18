@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charme</title>
 </head>
@@ -17,12 +18,11 @@
         }
     ?>
     <div class="contenitore">
-        <div  class="header">
-            <!--GIADA-->
+        <div class="header">
             <h1>Crea il tuo profilo <span style="font-size: 2rem;">💘</span></h1>
         </div>
         <div>
-        <form action="qualita.php" method="post" class="formCliccami">
+        <form action="qualita.php" method="post" id="registrationeForm" class="formCliccami">
             <label for="nomi">Come ti chiami? : </label>
             <input type="text" name="nome" id="nomi" required>
             <div class="message" id="message1">
@@ -44,10 +44,7 @@
             <br>
             <br>
             <label for="telefoni">Dacci il tuo numero di telefono:</label>
-            <input type="tel" id="telefoni" name="telefono" pattern="[0-9]{10}" 
-           maxlength="10" 
-           title="Inserisci esattamente 10 cifre numeriche" 
-           required>
+            <input type="tel" id="telefoni" name="telefono" pattern="[0-9]{10}" maxlength="10"  required>
             <br>
             <br>
             <label for="sessi">Qual è il tuo sesso? :</label>
@@ -71,53 +68,87 @@
             <a href="index.php" class="annulla"><button class="annulla">Annulla</button></a>
         </div>
     </div>
-<script>
-document.getElementById("nomi").addEventListener("focus", function() {
-    // Mostra il messaggio (div) quando si fa clic sulla casella di testo
-    document.getElementById("message1").style.display = "block";
-});
-document.getElementById("cognomi").addEventListener("focus", function() {
-    // Mostra il messaggio (div) quando si fa clic sulla casella di testo
-    document.getElementById("message2").style.display = "block";
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Riferimento all'input e al messaggio di errore
-    const telefonoInput = document.getElementById('telefoni');
-    const etaInput = document.getElementById('age');
-    
-    if (telefonoInput) {
-        // Impedisci l'inserimento di caratteri non numerici
-        telefonoInput.addEventListener('keypress', function(e) {
-            // Ottieni il carattere dalla tastiera
-            const char = String.fromCharCode(e.charCode);
-            
-            // Permetti solo numeri (0-9)
-            if (!/^[0-9]$/.test(char)) {
-                e.preventDefault(); // Impedisci l'inserimento
-            }
-        });
-    }
-    
-    if (etaInput) {
-        // Controlla il numero quando l'utente modifica il valore di etaInput
-        etaInput.addEventListener('change', function() {
-            //il valore dell'input(this.value) è a base decimale
-            const eta = parseInt(this.value, 10);
-            // isNaN(eta) controlla se il valore non è un numero
-        if (isNaN(eta) || eta < 18 || eta > 99) {
-            alert('L\'età deve essere compresa tra 18 e 99');
-            this.value = ''; // Cancella il valore non valido
-        }
-        });
-    
-
-    }
-});
-
-</script>
-    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    document.getElementById("nomi").addEventListener("focus", function() {
+        // Mostra il messaggio (div) quando si fa clic sulla casella di testo
+        document.getElementById("message1").style.display = "block";
+    });
+
+    document.getElementById("cognomi").addEventListener("focus", function() {
+        document.getElementById("message2").style.display = "block";
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Riferimento all'input e al messaggio di errore
+        const telefonoInput = document.getElementById('telefoni');
+        const etaInput = document.getElementById('age');
+        
+        if (telefonoInput) {
+            // Impedisci l'inserimento di caratteri non numerici
+            telefonoInput.addEventListener('keypress', function(e) {
+                // Ottieni il carattere dalla tastiera
+                const char = String.fromCharCode(e.charCode);
+                
+                // Permetti solo numeri (0-9)
+                if (!/^[0-9]$/.test(char)) {
+                    e.preventDefault(); // Impedisci l'inserimento
+                }
+            });
+        }
+        
+        if (etaInput) {
+            // Controlla il numero quando l'utente modifica il valore di etaInput
+            etaInput.addEventListener('change', function() {
+                //il valore dell'input(this.value) è a base decimale
+                const eta = parseInt(this.value, 10);
+                // isNaN(eta) controlla se il valore non è un numero
+                if (isNaN(eta) || eta < 18 || eta > 99) {
+                    alert('L\'età deve essere compresa tra 18 e 99');
+                    this.value = ''; // Cancella il valore non valido
+                }
+            });
+        }
+
+        // Gestione del form per la chiamata AJAX
+        const form = document.getElementById('registrationeForm');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                // Previene l'invio del form
+                event.preventDefault();                
+                const email = document.getElementById("emails").value;
+                
+                // chiamata AJAX
+                $.ajax({
+                    url: "operazioniData.php",
+                    data: { 
+                        functionname: "controlloProfilo", 
+                        email: email 
+                    },   
+                    method: "POST",
+                    dataType: "JSON",
+                    success: function(result) {
+                        console.log("Risposta AJAX ricevuta:", result);
+                        
+                        if (result.esito == 'successo') {
+                            alert('Esiste già un account con questa email');
+                            window.location.href = "index.php";
+                        } else {
+                            // Se non esiste ancora un account con questa email, invia il form
+                            console.log("Nessun account esistente, invio il form");
+                            form.submit();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Errore AJAX:", status, error);
+                        alert("Si è verificato un errore durante la verifica dell'email");
+                    }
+                });
+            });
+        } else {
+            console.error("Form non trovato!");
+        }
+    });
+</script>
 </html>

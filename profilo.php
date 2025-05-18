@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">   
      <link rel="stylesheet" href="style2.css">
-     
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
     <title>Charme</title>
 </head>
 <body>
@@ -23,7 +23,6 @@ body > .container{
     text-align: center;
     animation: scaleIn 0.8s ease-out;
 }
-
 body {
     background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
@@ -39,70 +38,13 @@ h1 {
     margin-bottom: 10px;
     color: #722c44;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-input[type="text"]{
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-    
-}
-.input-group-text{
-    background-color: rgb(225, 175, 177); ;
-    border:none;
-    color:#6e446b;
-}
-.form-select{
-    background-color: rgb(236, 194, 195); ;
-    border:none;
-    color:#6e446b;
-}
-h1{
     text-align:center;
 }
-p{
-    font-size:13px;
-    text-align:center;
-    font-style:italic;
-    color:#6e446b;
+label{
+   color: #6e446b;
+   font-weight: bold;
 }
-.btn-check:checked + .btn {
-  background-color: #e94e68; /* Rosa chiaro quando selezionato */
-  color: white;
-  border:none;
-}
-.btn-group .btn{
-      border-radius: 25px;
-      font-size: 13px;
-      text-align:center;
-      transition: all 0.3s ease;
-      background-color:rgb(225, 175, 177); /* Beige caldo */
-    color: #6e446b; /* Colore del testo che si abbina allo sfondo */
-    border: 1px solid #e1b7b7; /* Bordi dello stesso colore */
-    }
-
-/* Rimuovi il margine sull'ultimo bottone per evitare uno spazio extra */
-.btn-group .btn:last-child {
-    margin-right: 0;
-}
-
-/* Hover: Cambia il colore quando si passa sopra */
-.btn-group .btn:hover {
-    background-color:#db687b ; /* Un rosa chiaro per l'effetto hover */
-    color: #fff; /* Cambia il colore del testo al passaggio */
-}
-
-
-/* Focus (per quando il bottone è selezionato) */
-.btn-group .btn:focus {
-    outline: none;
-    box-shadow: 0 0 5px 2px rgba(200, 100, 120, 0.6); /* Sfumatura rosa per il focus */
-}
-
-input[type="submit"] {
+a{
     background-color:#db687b;
     color: white;
     border: none;
@@ -113,17 +55,36 @@ input[type="submit"] {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(219, 104, 123, 0.5);
     margin: 10px 0;
+    text-decoration:none;
+    
 }
-input[type="submit"]:hover {
+a:hover {
     background-color: #e94e68;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
 }
-label{
-   color: #6e446b;
-   font-weight: bold;
+.foto{
+    
+    width: 250px; 
+  height: 250px;
+    overflow: hidden;
+     border-radius: 50%;
+       background-color: #f0f0f0;
 }
- 
+.utente{
+    text-align:left;
+    padding:30px;
+}
+.nome{
+    color:#db687b;
+    font-size:40px;
+    font-weight:bold;
+
+}
+.dati{
+    color:#db687b;
+    font-size:18px;
+}
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -152,39 +113,98 @@ label{
 </style>
     <div class="container">
 
-<form action="hobby.php" method="POST"> 
-    <h1>✨</h1>
+<form> 
+    <h1>Lo charme che hai scelto✨</h1>
+   
     <?php
 include("conn.php");
 session_start();
     $query="SELECT *
      FROM matchutenti m INNER JOIN utenti u 
       ON m.id_utenteMatch=u.id_utenti INNER JOIN foto f
-      ON f.id_utenti=u.id_utenti
-      WHERE m.id_utenti='$_SESSION[idU]'
-      GROUP BY m.id_utenteMatch";
+      ON f.id_utenti=u.id_utenti INNER JOIN carattaggiuntive c 
+      ON u.id_utenti=c.id_utenti  INNER JOIN qualita q
+      ON u.id_utenti=q.id_utenti INNER JOIN interessi i
+      ON u.id_utenti=i.id_utenti INNER JOIN hobby h
+      ON u.id_utenti=h.id_utenti
+      WHERE u.id_utenti='$_POST[id_utenteMatch]'
+    GROUP BY m.id_utenteMatch";
     $risu=mysqli_query($conn,$query)or die ("connessione fallita".mysqli_error($conn));
-    
+    //style='width:50%;height:20%;'
     if($risu->num_rows>0){
         while($row=mysqli_fetch_array($risu, MYSQLI_ASSOC)){
-    
-       echo "<img src='./images/$row[foto]' style='width:100%;height:100%;' class='card-img-top'>";
+       echo "<div class='foto'>";
+       echo "<img src='./images/$row[foto]' class='card-img-top'>";
+       echo "</div>";
 
        echo "<div class='utente'>";
-       echo "<h5 class='card-title'>".$row['nome']." ".$row['cognome']."</h5>";
-       echo "<p class='card-text'style='font-weight:bold;'> eta'<span style='font-weight:normal;'>: ".$row['eta']."</span></p>";
+       echo "<div class='nome'>";
+       echo "<p>".$row['nome']." ".$row['cognome']."<p>";
+       
        echo "</div>";
+
+       echo "<div class='dati'>";
+       echo "<p>".$row['eta']." "."anni</p>";
+       echo "<span class='material-symbols-outlined'>mail</span>";
+       echo "<p>".$row['email']."</p>";
+
+       echo "<span class='material-symbols-outlined'>call</span>";
+       echo "<p>".$row['num_telefono']."</p>";
+
+       echo "<span style='font-weight:bold';>Segno zodiacale</span>"; 
+       echo "<p>".$row['zodiaco']."</p>";
+
+       echo "<span style='font-weight:bold';>Sport</span>"; 
+       echo "<p>".$row['sport']."</p>";
+
+       echo "<span style='font-weight:bold';>Carattere</span>"; 
+       echo "<p>".$row['carattere']."</p>";
+
+       echo "<span style='font-weight:bold';>Colore di capelli</span>"; 
+       echo "<p>".$row['capelli']."</p>";
+
+       echo "<span style='font-weight:bold';>Colore degli occhi</span>"; 
+       echo "<p>".$row['occhi']."</p>";
+
+       echo "<span style='font-weight:bold';>Altezza</span>"; 
+       echo "<p>".$row['altezza']."</p>";
+
+       echo "<span style='font-weight:bold';>Stile</span>"; 
+       echo "<p>".$row['stile']."</p>";
+
+        echo "<span style='font-weight:bold';>Sta cercando ?</span>"; 
+       echo "<p>".$row['relazione']."</p>";
+
+        echo "<span style='font-weight:bold';>Esprime il suo interesse con...</span>"; 
+       echo "<p>".$row['esprimiAm']."</p>";
+
+        echo "<span style='font-weight:bold';>Per approcciare...</span>"; 
+       echo "<p>".$row['sentire']."</p>";
+
+        echo "<span style='font-weight:bold';>Nel partner sta cercando...</span>"; 
+       echo "<p>".$row['caratterePartner']."</p>";
+
+        echo "<span style='font-weight:bold';>Nel tempo libero...</span>"; 
+       echo "<p>".$row['hobby']."</p>";
+
+        echo "<span style='font-weight:bold';>Si definisce</span>"; 
+       echo "<p>".$row['descrizionePersona']."</p>";
+       echo  "</div>";
+       echo "</div>";
+
+
        echo "<div class='footer'>";
-       echo "<a href='profilo.php' class='btn btn-primary'>Torna Indietro</a>";
+       echo "<a href='./riassunto.php'>Torna Indietro</a>";
        echo "</div>";
        echo "</div>";
        echo "</div>";
        
         }
-        echo "</div>";
+    echo "</div>";
     }
-    ?>
 
+    ?>
+</form>
 </div>
 </div>
 

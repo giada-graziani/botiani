@@ -55,7 +55,7 @@ $queryQualita="INSERT INTO qualita(id_utenti,sport,carattere,animali,bevi,fumo,z
 VALUES('$idUtente','$sport','$caratteristica','$animale','$bere','$fumo','$segnoZ','$descrizione')";
 $risuQualita=mysqli_query($conn,$queryQualita) or die ("Query fallita " . mysqli_error($conn));
 
-$queryHobby="INSERT INTO hobby(id_utenti,sentire,esprimiAm,hobby)VALUES('$idUtente','$sentire','$esprimi','$hobby')";
+$queryHobby="INSERT INTO hobby(id_utenti,descrizione,sentire,esprimiAm)VALUES('$idUtente','$hobby','$sentire','$esprimi')";
 $risuHobby=mysqli_query($conn,$queryHobby)or die("Query fallita ".mysqli_error($conn));
 
 $queryInteressi="INSERT INTO interessi(id_utenti,genere,relazione,caratterePartner,capelli,occhi,altezza,stile)

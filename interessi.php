@@ -139,8 +139,8 @@ label{
          <div class="form-group">
              <label for="gen">Genere</label>
              <select id="gen" name="genere" required>
-                 <option value="maschio">Maschio</option>
-                 <option value="femmina">Femmina</option>
+                 <option value="uomo">Uomo</option>
+                 <option value="donna">Donna</option>
                  <option value="entrambi">Entrambi</option>
              </select>
          </div>
