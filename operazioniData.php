@@ -34,13 +34,11 @@ if($nomeFunzione=="estetica"){
             ('$idU', '$capelli', '$occhi', '$altezza', '$stile')";
 
     $ris=mysqli_query($conn,$q) or die ("Query fallita " . mysqli_error($conn));
-    //echo "4e";
+   
     if($ris){ // mysqli_num_rows() è utilizzato per le query di selezione (SELECT), non per le query di inserimento (INSERT)
         echo json_encode(array('esito' => 'successo')); 
-        //echo "5.0e";
     }
     else{
-        //echo "5.1e";
         echo json_encode(array('esito' => 'errore', 'messaggio' =>'caratteristiche non inserite')); 
     }
 }

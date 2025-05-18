@@ -66,17 +66,17 @@ a:hover {
 .foto{
     
     width: 250px; 
-  height: 250px;
+    height: 250px;
     overflow: hidden;
-     border-radius: 50%;
-       background-color: #f0f0f0;
+    border-radius: 50%;
+    background-color: #f0f0f0;
 }
 .utente{
     text-align:left;
     padding:30px;
 }
 .nome{
-    color:#db687b;
+    color:rgba(170, 62, 83, 0.77);
     font-size:40px;
     font-weight:bold;
 
@@ -140,7 +140,6 @@ session_start();
        echo "<div class='utente'>";
        echo "<div class='nome'>";
        echo "<p>".$row['nome']." ".$row['cognome']."<p>";
-       
        echo "</div>";
 
        echo "<div class='dati'>";
@@ -185,7 +184,7 @@ session_start();
        echo "<p>".$row['caratterePartner']."</p>";
 
         echo "<span style='font-weight:bold';>Nel tempo libero...</span>"; 
-       echo "<p>".$row['hobby']."</p>";
+       echo "<p>".$row['descrizione']."</p>";
 
         echo "<span style='font-weight:bold';>Si definisce</span>"; 
        echo "<p>".$row['descrizionePersona']."</p>";

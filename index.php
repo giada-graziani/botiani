@@ -50,7 +50,6 @@
                                         <label for="passwords">Password</label>
                                     </div>
                                 </div>
-                            
                         </div>
                         <div class="modal-footer">
                             <input id="conferma" type="submit" value="Accedi">
