@@ -11,6 +11,32 @@
 </head>
 <body>
 <style>
+/* Stili per la navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(100, 36, 50, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #db687b !important;
+}
 body > .container{
     background-color: rgba(248, 248, 248, 0.747);
     backdrop-filter: blur(10px);
@@ -27,11 +53,13 @@ body {
     background: linear-gradient(135deg, #642432 0%, #c56975 100%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 100px; /* Spazio per la navbar */
+    padding-bottom: 20px;
 }
 h1 {
     font-size: 2.8rem;
@@ -109,16 +137,33 @@ a:hover {
    
     
 }
- 
 </style>
-    <div class="container">
+<?php
+    include("conn.php");
+    session_start();
+?>
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+             <img src="./images/png.png" alt="Logo" width="65" height="60" class="d-inline-block align-text-top">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./profiloUtente.php">Profilo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container">
 
 <form> 
     <h1>Lo charme che hai scelto✨</h1>
    
     <?php
-include("conn.php");
-session_start();
     $query="SELECT *
      FROM matchutenti m INNER JOIN utenti u 
       ON m.id_utenteMatch=u.id_utenti INNER JOIN foto f
@@ -193,7 +238,7 @@ session_start();
 
 
        echo "<div class='footer'>";
-       echo "<a href='./riassunto.php'>Torna Indietro</a>";
+       echo "<a href='./riassunto.php'>Indietro</a>";
        echo "</div>";
        echo "</div>";
        echo "</div>";

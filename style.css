@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 100px 20px 20px 20px; /* Stesso padding della pagina match */
     color: #333;
 }
  
@@ -88,7 +88,7 @@ a {
     position: relative;
 }
 
-a p {
+a p , #aMatch p{
     font-size: 1rem;
     position: relative;
     padding-bottom: 2px;
@@ -105,7 +105,7 @@ a p:after {
     transition: width 0.3s ease;
 }
 
-a:hover p:after {
+a:hover p:after , #aMatch:hover p:hover {
     width: 100%;
 }
  
@@ -518,11 +518,59 @@ input[type="submit"]:hover {
 }
 
 #aMatch {
+     text-decoration: none;
     color:rgba(248, 248, 248, 0.747);
 }
  
 #aMatch p:after {
     background: rgba(248, 248, 248, 0.747);
+}/* Navbar - uguale alla pagina dei match */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(100, 36, 50, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #db687b !important;
+}
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bodyMatch {
+        padding-top: 80px; /* Stesso responsive della pagina match */
+    }
+    
+    .navbar-nav {
+        padding-top: 0.5rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+    }
 }
 
 /*ESTETICA*/
