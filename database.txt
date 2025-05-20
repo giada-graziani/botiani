@@ -75,22 +75,39 @@ foto varchar(5000)
 
 INSERT INTO utenti (cognome, nome, email, eta, password, num_telefono, sesso) VALUES 
 ('Rossi', 'Luca', 'luca.rossi@gmail.com', 28, '1', '3491234567', 'uomo'),
-('Bianchi', 'Giulia', 'giulia.bianchi@yahoo.com', 24, '2', '3209876543', 'donna'),
+('Bianchi', 'Giulio', 'giulio.bianchi@yahoo.com', 24, '2', '3209876543', 'uomo'),
 ('Verdi', 'Marco', 'marco.verdi@hotmail.com', 33, '3', '3331122334', 'uomo'),
-('Esposito', 'Sara', 'sara.esposito@gmail.com', 27, '4', '3887766554', 'donna'),
+('Esposito', 'Samir', 'samir.esposito@gmail.com', 27, '4', '3887766554', 'uomo'),
 ('Romano', 'Andrea', 'andrea.romano@yahoo.com', 31, '5', '3465544332', 'uomo'),
-('Ricci', 'Chiara', 'chiara.ricci@hotmail.com', 22, '6', '3278899001', 'donna'),
+('Ricci', 'Cristian', 'cristian.ricci@hotmail.com', 22, '6', '3278899001', 'uomo'),
 ('Marino', 'Francesco', 'francesco.marino@gmail.com', 35, '7', '3342211335', 'uomo'),
-('Greco', 'Martina', 'martina.greco@yahoo.com', 29, '8', '3487700112', 'donna'),
+('Greco', 'Martino', 'martino.greco@yahoo.com', 29, '8', '3487700112', 'uomo'),
 ('Galli', 'Alessandro', 'alessandro.galli@hotmail.com', 26, '9', '3661122009', 'uomo'),
-('Costa', 'Elisa', 'elisa.costa@gmail.com', 34, '10', '3359988771', 'donna'),
+('Costa', 'Elia', 'elia.costa@gmail.com', 34, '10', '3359988771', 'uomo'),
 ('Fontana', 'Davide', 'davide.fontana@yahoo.com', 30, '11', '3294433221', 'uomo'),
-('Ferri', 'Valentina', 'valentina.ferri@hotmail.com', 23, '12', '3225566778', 'donna'),
+('Ferri', 'Valentino', 'valentino.ferri@hotmail.com', 23, '12', '3225566778', 'uomo'),
 ('Conti', 'Simone', 'simone.conti@gmail.com', 32, '13', '3901122334', 'uomo'),
-('Moretti', 'Alessia', 'alessia.moretti@yahoo.com', 25, '14', '3367788990', 'donna'),
+('Moretti', 'Alessio', 'alessio.moretti@yahoo.com', 25, '14', '3367788990', 'uomo'),
 ('De Luca', 'Matteo', 'matteo.deluca@hotmail.com', 36, '15', '3216655447', 'uomo'),
-('Barbieri', 'Ilaria', 'ilaria.barbieri@gmail.com', 21, '16', '3478899003', 'donna'),
-('Lombardi', 'Stefano', 'stefano.lombardi@yahoo.com', 38, '17', '3301122443', 'uomo');
+('Barbieri', 'Isacco', 'isacco.barbieri@gmail.com', 21, '16', '3478899003', 'uomo'),
+('Lombardi', 'Stefano', 'stefano.lombardi@yahoo.com', 38, '17', '3301122443', 'uomo')
+('Rossi', 'Lucia', 'lucia.rossi@gmail.com', 28, '18', '3491234567', 'donna'),
+('Bianchi', 'Giulia', 'giulia.bianchi@yahoo.com', 24, '19', '3209876543', 'donna'),
+('Verdi', 'Marcella', 'marcella.verdi@hotmail.com', 33, '20', '3331122334', 'donna'),
+('Esposito', 'Sara', 'sara.esposito@gmail.com', 27, '23', '3887766554', 'donna'),
+('Romano', 'Anna', 'anna.romano@yahoo.com', 31, '24', '3465544332', 'donna'),
+('Ricci', 'Chiara', 'chiara.ricci@hotmail.com', 22, '25', '3278899001', 'donna'),
+('Marino', 'Francesca', 'francesca.marino@gmail.com', 35, '26', '3342211335', 'donna'),
+('Greco', 'Martina', 'martina.greco@yahoo.com', 29, '27', '3487700112', 'donna'),
+('Galli', 'Alessandra', 'alessandra.galli@hotmail.com', 26, '28', '3661122009', 'donna'),
+('Costa', 'Elisa', 'elisa.costa@gmail.com', 34, '29', '3359988771', 'donna'),
+('Fontana', 'Daria', 'daria.fontana@yahoo.com', 30, '30', '3294433221', 'donna'),
+('Ferri', 'Valentina', 'valentina.ferri@hotmail.com', 23, '31', '3225566778', 'donna'),
+('Conti', 'Simona', 'simona.conti@gmail.com', 32, '32', '3901122334', 'donna'),
+('Moretti', 'Alessia', 'alessia.moretti@yahoo.com', 25, '33', '3367788990', 'donna'),
+('De Luca', 'Marta', 'marta.deluca@hotmail.com', 36, '34', '3216655447', 'donna'),
+('Barbieri', 'Ilaria', 'ilaria.barbieri@gmail.com', 21, '35', '3478899003', 'donna'),
+('Lombardi', 'Stefania', 'stefania.lombardi@yahoo.com', 38, '36', '3301122443', 'donna');
 
 
 INSERT INTO qualita (id_utenti, sport, carattere, animali, bevi, fumo, zodiaco, descrizionePersona) VALUES
@@ -110,7 +127,25 @@ INSERT INTO qualita (id_utenti, sport, carattere, animali, bevi, fumo, zodiaco, 
 (14, 'Zumba', 'Solare', 'Uccelli', 'No', 'No', 'Toro', 'Allegra e spontanea'),
 (15, 'Crossfit', 'Determinato', 'Cani', 'Sì', 'Sì', 'Leone', 'Competitivo e sincero'),
 (16, 'Tennis', 'Empatica', 'Gatti', 'Occasionalmente', 'No', 'Bilancia', 'Dolce e curiosa'),
-(17, 'Ciclismo', 'Riflessivo', 'Cani', 'No', 'No', 'Vergine', 'Tranquillo e educato');
+(17, 'Ciclismo', 'Riflessivo', 'Cani', 'No', 'No', 'Vergine', 'Tranquillo e educato')
+(18, 'Calcio', 'Estroverso', 'Cani', 'Occasionalmente', 'No', 'Ariete', 'Solare e dinamico'),
+(19, 'Yoga', 'Introversa', 'Gatti', 'No', 'No', 'Toro', 'Tranquilla e riflessiva'),
+(20, 'Palestra', 'Espansivo', 'Cani', 'Sì', 'Sì', 'Gemelli', 'Socievole e vivace'),
+(21, 'Nuoto', 'Romantica', 'Cani', 'No', 'No', 'Cancro', 'Sensibile e gentile'),
+(22, 'Basket', 'Avventuroso', 'Uccelli', 'Occasionalmente', 'Sì', 'Leone', 'Leader naturale'),
+(23, 'Danza', 'Creativa', 'Gatti', 'Sì', 'No', 'Vergine', 'Artistica e precisa'),
+(24, 'Corsa', 'Competitivo', 'Cani', 'Sì', 'No', 'Bilancia', 'Equilibrato e sportivo'),
+(25, 'Pilates', 'Timida', 'Conigli', 'No', 'No', 'Scorpione', 'Dolce e misteriosa'),
+(26, 'Tennis', 'Determinato', 'Cani', 'Occasionalmente', 'Sì', 'Sagittario', 'Forte e deciso'),
+(27, 'Camminata', 'Empatica', 'Gatti', 'No', 'No', 'Capricorno', 'Matura e affettuosa'),
+(28, 'Calisthenics', 'Ambizioso', 'Cani', 'Sì', 'Sì', 'Acquario', 'Tenace e originale'),
+(29, 'Danza', 'Altruista', 'Gatti', 'Occasionalmente', 'No', 'Pesci', 'Creativa e sensibile'),
+(30, 'Climbing', 'Ironico', 'Cani', 'Sì', 'No', 'Ariete', 'Simpatico e diretto'),
+(31, 'Zumba', 'Solare', 'Uccelli', 'No', 'No', 'Toro', 'Allegra e spontanea'),
+(32, 'Crossfit', 'Determinato', 'Cani', 'Sì', 'Sì', 'Leone', 'Competitivo e sincero'),
+(33, 'Tennis', 'Empatica', 'Gatti', 'Occasionalmente', 'No', 'Bilancia', 'Dolce e curiosa'),
+(34, 'Ciclismo', 'Riflessivo', 'Cani', 'No', 'No', 'Vergine', 'Tranquillo e educato');
+
 
 INSERT INTO carattAggiuntive (id_utenti, capelli, occhi, altezza, stile) VALUES
 (1, 'Castani', 'Marroni', '175', 'Sportivo'),
@@ -129,7 +164,24 @@ INSERT INTO carattAggiuntive (id_utenti, capelli, occhi, altezza, stile) VALUES
 (14, 'Biondi', 'Castani', '162', 'Vintage'),
 (15, 'Neri', 'Azzurri', '181', 'Classico'),
 (16, 'Castani', 'Verdi', '167', 'Romantico'),
-(17, 'Grigi', 'Marroni', '173', 'Casual');
+(17, 'Grigi', 'Marroni', '173', 'Casual')
+(18, 'Castani', 'Marroni', '175', 'Sportivo'),
+(19, 'Biondi', 'Verdi', '165', 'Casual'),
+(20, 'Neri', 'Castani', '180', 'Urban'),
+(21, 'Rossi', 'Azzurri', '160', 'Chic'),
+(22, 'Castani', 'Verdi', '185', 'Streetwear'),
+(23, 'Neri', 'Marroni', '168', 'Classico'),
+(24, 'Biondi', 'Azzurri', '178', 'Sportivo'),
+(25, 'Castani', 'Verdi', '170', 'Romantico'),
+(26, 'Neri', 'Marroni', '182', 'Elegante'),
+(27, 'Rossi', 'Verdi', '166', 'Minimal'),
+(28, 'Biondi', 'Azzurri', '179', 'Trendy'),
+(29, 'Neri', 'Marroni', '164', 'Casual'),
+(30, 'Castani', 'Verdi', '177', 'Sportivo'),
+(31, 'Biondi', 'Castani', '162', 'Vintage'),
+(32, 'Neri', 'Azzurri', '181', 'Classico'),
+(33, 'Castani', 'Verdi', '167', 'Romantico'),
+(34, 'Grigi', 'Marroni', '173', 'Casual');
 
 INSERT INTO interessi (id_utenti, genere, relazione, caratterePartner, capelli, occhi, altezza, stile) VALUES
 (1, 'donna', 'Seria', 'Dolce', 'Castani', 'Verdi', '160-170', 'Casual'),
@@ -148,7 +200,24 @@ INSERT INTO interessi (id_utenti, genere, relazione, caratterePartner, capelli, 
 (14, 'uomo', 'Seria', 'Ambiziosa', 'Biondi', 'Azzurri', '175-185', 'Urban'),
 (15, 'donna', 'Senza impegno', 'Creativa', 'Castani', 'Verdi', '165-175', 'Elegante'),
 (16, 'uomo', 'Relazione', 'Ironica', 'Neri', 'Marroni', '180-185', 'Streetwear'),
-(17, 'donna', 'Seria', 'Dolce', 'Biondi', 'Azzurri', '165-175', 'Casual');
+(17, 'donna', 'Seria', 'Dolce', 'Biondi', 'Azzurri', '165-175', 'Casual')
+(18, 'donna', 'Seria', 'Dolce', 'Castani', 'Verdi', '160-170', 'Casual'),
+(19, 'uomo', 'Convivenza', 'Sicuro', 'Neri', 'Marroni', '170-180', 'Sportivo'),
+(20, 'donna', 'Amicizia', 'Solare', 'Biondi', 'Verdi', '165-175', 'Elegante'),
+(21, 'uomo', 'Relazione seria', 'Protettivo', 'Castani', 'Azzurri', '175-185', 'Classico'),
+(22, 'donna', 'Senza impegno', 'Indipendente', 'Rossi', 'Castani', '160-170', 'Urban'),
+(23, 'uomo', 'Amicizia', 'Divertente', 'Castani', 'Marroni', '170-180', 'Casual'),
+(24, 'donna', 'Seria', 'Creativa', 'Biondi', 'Verdi', '165-170', 'Chic'),
+(25, 'uomo', 'Convivenza', 'Affettuoso', 'Neri', 'Castani', '175-185', 'Minimal'),
+(26, 'donna', 'Relazione seria', 'Empatica', 'Castani', 'Verdi', '160-170', 'Elegante'),
+(27, 'uomo', 'Senza impegno', 'Avventuroso', 'Biondi', 'Azzurri', '180-190', 'Sportivo'),
+(28, 'donna', 'Seria', 'Romantica', 'Rossi', 'Castani', '165-175', 'Chic'),
+(29, 'uomo', 'Relazione', 'Sicura', 'Castani', 'Marroni', '170-180', 'Casual'),
+(30, 'donna', 'Amicizia', 'Timida', 'Neri', 'Verdi', '160-170', 'Classico'),
+(31, 'uomo', 'Seria', 'Ambiziosa', 'Biondi', 'Azzurri', '175-185', 'Urban'),
+(32, 'donna', 'Senza impegno', 'Creativa', 'Castani', 'Verdi', '165-175', 'Elegante'),
+(33, 'uomo', 'Relazione', 'Ironica', 'Neri', 'Marroni', '180-185', 'Streetwear'),
+(34, 'donna', 'Seria', 'Dolce', 'Biondi', 'Azzurri', '165-175', 'Casual');
 
 INSERT INTO hobby (id_utenti, descrizione, sentire, esprimereAm) VALUES
 (1, 'Suonare la chitarra', 'rilassamento', 'comunicare emozioni'),
@@ -167,7 +236,24 @@ INSERT INTO hobby (id_utenti, descrizione, sentire, esprimereAm) VALUES
 (14, 'Andare in bicicletta', 'vitalità', 'movimento libero'),
 (15, 'Pitturare', 'calma', 'colore alle emozioni'),
 (16, 'Giardinaggio', 'serenità', 'cura della vita'),
-(17, 'Fare volontariato', 'empatia', 'aiutare con il cuore');
+(17, 'Fare volontariato', 'empatia', 'aiutare con il cuore')
+(18, 'Suonare la chitarra', 'rilassamento', 'comunicare emozioni'),
+(19, 'Leggere romanzi', 'ispirazione', 'immaginare mondi'),
+(20, 'Scrivere poesie', 'introspezione', 'esprimere se stessi'),
+(21, 'Disegnare', 'tranquillità', 'visualizzare emozioni'),
+(22, 'Ballare', 'energia', 'libertà corporea'),
+(23, 'Cucinare dolci', 'gioia', 'prendersi cura degli altri'),
+(24, 'Fare trekking', 'connessione con la natura', 'libertà'),
+(25, 'Collezionare francobolli', 'curiosità', 'ordine e memoria'),
+(26, 'Giocare a scacchi', 'sfida mentale', 'strategia'),
+(27, 'Cantare', 'felicità', 'liberazione emotiva'),
+(28, 'Fotografare paesaggi', 'meraviglia', 'catturare momenti'),
+(29, 'Guardare film', 'emozione', 'immersione nelle storie'),
+(30, 'Fare yoga', 'equilibrio', 'armonia interiore'),
+(31, 'Andare in bicicletta', 'vitalità', 'movimento libero'),
+(32, 'Pitturare', 'calma', 'colore alle emozioni'),
+(33, 'Giardinaggio', 'serenità', 'cura della vita'),
+(34, 'Fare volontariato', 'empatia', 'aiutare con il cuore');
 
 
 INSERT INTO foto (id_utenti, foto) VALUES
@@ -188,3 +274,5 @@ INSERT INTO foto (id_utenti, foto) VALUES
 (15, '15.jpg'),
 (16, '16.jpg'),
 (17, '17.jpg');
+
+//DA AGGIUNGERE FOTO PER LE DONNE E SISTEMARE QUELLE VECCHIE

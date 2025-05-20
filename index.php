@@ -5,14 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charme</title>
-    
-    <!-- Bootstrap CSS prima del CSS personalizzato -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-    
-    <!-- CSS personalizzato dopo Bootstrap -->
     <link rel="stylesheet" href="style.css">
-    
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 </head>
@@ -59,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <a href="cliccami.php"><p>non sei ancora registrato?Cliccami!</p></a>
+            <a href="cliccami.php"><p>Non sei ancora registrato?</p></a>
         </div>  
     </div>
 

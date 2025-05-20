@@ -110,7 +110,6 @@
     <div class="container">
         <form> 
             <h1>Il tuo charme✨</h1>
-        
             <?php
         include("conn.php");
         session_start();

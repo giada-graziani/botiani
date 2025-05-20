@@ -92,12 +92,14 @@ a:hover {
     box-shadow: 0 6px 20px rgba(219, 104, 123, 0.6);
 }
 .foto{
-    
     width: 250px; 
     height: 250px;
     overflow: hidden;
     border-radius: 50%;
     background-color: #f0f0f0;
+    display: flex; /* Usa flexbox per centrare il contenuto */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
 }
 .utente{
     text-align:left;
@@ -152,7 +154,7 @@ a:hover {
                         <a class="nav-link" href="./profiloUtente.php">Profilo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./logout.php">Logout</a>
+                        <a class="nav-link" href="./index.php">Logout</a>
                     </li>
                 </ul>
             </div>

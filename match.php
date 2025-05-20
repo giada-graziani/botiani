@@ -19,24 +19,6 @@
         $idU=$_SESSION['idU'];
         echo"<p id='idU' hidden='hidden'>$idU</p>";
     ?>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <img src="./images/png.png" alt="Logo" width="65" height="60" class="d-inline-block align-text-top">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./profiloUtente.php">Profilo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="header">
         <h1 id="h1Match">Ecco i posssibili charm che abbiamo trovato per te!</h1>
         <h3>Scorri per trovare il tuo match perfetto!</h3>

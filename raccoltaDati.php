@@ -63,7 +63,6 @@ VALUES('$idUtente','$genere','$relazione','$carattCercata','$colCapelli','$colOc
 $risuInteressi=mysqli_query($conn,$queryInteressi)or die("Query fallita ".mysqli_error($conn));
 
 if(($risuQualita==TRUE) && ($risuHobby==TRUE) && ($risuInteressi==TRUE) && ($risuUtente==TRUE)){
-
     header("refresh:0;url=estetica.php");
 }
 ?>

@@ -93,11 +93,11 @@
             </div>
             <br />
             <br />
-            <label for="altezze">Qual'e la tua altezza?(in centimetri): </label>
+            <label for="altezze">Qual'e la tua altezza?:</label>
             <input type="number" id="altezze" name="altezza" min="120" max="300" placeholder="Es: 170 cm" required>
             <br />
             <br />
-            <label>Quale stile ti rappresenta di più? : </label>
+            <label>Quale stile ti rappresenta di più?: </label>
             <div class="btn-group btn-group-sm" role="group" aria-label="Gruppo di bottoni toggle" name="stile" id="stili" required>
                 <input type="radio" class="btn-check" name="optionsStili" id="option1S" autocomplete="off" value="Baggy">
                 <label class="btn" for="option1S">Baggy</label>
