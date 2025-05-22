@@ -201,7 +201,7 @@ In quali di questi animali ti identifichi ?
             <label class="btn" for="bere1" >Non fa per me</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere2" autocomplete="off" value="astemio">
-            <label class="btn" for="bere2">sono astemio</label>
+            <label class="btn" for="bere2">Sono astemio</label>
 
             <input type="radio" class="btn-check" name="bere" id="bere3" autocomplete="off" value="ogni">
             <label class="btn" for="bere3">Ogni tanto</label>

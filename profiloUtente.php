@@ -10,6 +10,31 @@
     <title>Charme</title>
 </head>
 <style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(100, 36, 50, 0.9) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #db687b !important;
+    }
     body > .container{
         background-color: rgba(248, 248, 248, 0.747);
         backdrop-filter: blur(10px);
@@ -23,14 +48,16 @@
         animation: scaleIn 0.8s ease-out;
     }
     body {
-        background: linear-gradient(135deg, #642432 0%, #c56975 100%);
+       background: linear-gradient(135deg, #642432 0%, #c56975 100%);
         min-height: 100vh;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
-        padding: 0;
+        padding-top: 100px; /* Spazio per la navbar */
+        padding-bottom: 20px;
     }
     h1 {
         font-size: 2.8rem;
@@ -107,101 +134,120 @@
         }
 </style>
 <body>
-    <div class="container">
-        <form> 
-            <h1>Il tuo charme✨</h1>
-            <?php
+    <?php
         include("conn.php");
         session_start();
-            $query="SELECT *
-                    FROM utenti u 
-                    INNER JOIN foto f
-                        ON f.id_utenti=u.id_utenti 
-                    INNER JOIN carattaggiuntive c 
-                        ON u.id_utenti=c.id_utenti 
-                    INNER JOIN qualita q
-                        ON u.id_utenti=q.id_utenti 
-                    INNER JOIN interessi i
-                        ON u.id_utenti=i.id_utenti 
-                    INNER JOIN hobby h
-                        ON u.id_utenti=h.id_utenti
-                    WHERE u.id_utenti='$_SESSION[idU]'";
-            $risu=mysqli_query($conn,$query)or die ("connessione fallita".mysqli_error($conn));
-            //style='width:50%;height:20%;'
-            if($risu->num_rows>0){
-                while($row=mysqli_fetch_array($risu, MYSQLI_ASSOC)){
-            echo "<div class='foto'>";
-            echo "<img src='./images/$row[foto]' class='card-img-top'>";
-            echo "</div>";
+    ?>
+ <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container-fluid">
+            <img src="./images/png.png" alt="Logo" width="65" height="60" class="d-inline-block align-text-top">
+            <div id="navbarNav">
+                <div id="navbarNav" >
+                <div class="d-flex">
+                    <div class="nav-item me-3">
+                        <a class="nav-link disabled" href="./profiloUtente.php" aria-disabled="true" ><button class="btn text-light rounded-2" >Profilo</button></a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="./index.php"><button class="btn text-light rounded-2">Logout</button></a>
+                    </div>
+            </div>
+        </div>
+    </nav>
 
-            echo "<div class='utente'>";
-            echo "<div class='nome'>";
-            echo "<p>".$row['nome']." ".$row['cognome']."<p>";
-            echo "</div>";
+        <div class="container">
+            <form> 
+                <h1>Il tuo charme✨</h1>
+                <?php
+                    $query="SELECT *
+                            FROM utenti u 
+                            INNER JOIN foto f
+                                ON f.id_utenti=u.id_utenti 
+                            INNER JOIN carattaggiuntive c 
+                                ON u.id_utenti=c.id_utenti 
+                            INNER JOIN qualita q
+                                ON u.id_utenti=q.id_utenti 
+                            INNER JOIN interessi i
+                                ON u.id_utenti=i.id_utenti 
+                            INNER JOIN hobby h
+                                ON u.id_utenti=h.id_utenti
+                            WHERE u.id_utenti='$_SESSION[idU]'";
+                    $risu=mysqli_query($conn,$query)or die ("connessione fallita".mysqli_error($conn));
+                    //style='width:50%;height:20%;'
+                    if($risu->num_rows>0){
+                        while($row=mysqli_fetch_array($risu, MYSQLI_ASSOC)){
+                    echo "<div class='foto'>";
+                    echo "<img src='./images/$row[foto]' class='card-img-top'>";
+                    echo "</div>";
 
-            echo "<div class='dati'>";
-            echo "<p>".$row['eta']." "."anni</p>";
-            echo "<span class='material-symbols-outlined'>mail</span>";
-            echo "<p>".$row['email']."</p>";
+                    echo "<div class='utente'>";
+                    echo "<div class='nome'>";
+                    echo "<p>".$row['nome']." ".$row['cognome']."<p>";
+                    echo "</div>";
 
-            echo "<span class='material-symbols-outlined'>call</span>";
-            echo "<p>".$row['num_telefono']."</p>";
+                    echo "<div class='dati'>";
+                    echo "<p>".$row['eta']." "."anni</p>";
+                    echo "<span class='material-symbols-outlined'>mail</span>";
+                    echo "<p>".$row['email']."</p>";
 
-            echo "<span style='font-weight:bold';>Segno zodiacale</span>"; 
-            echo "<p>".$row['zodiaco']."</p>";
+                    echo "<span class='material-symbols-outlined'>call</span>";
+                    echo "<p>".$row['num_telefono']."</p>";
 
-            echo "<span style='font-weight:bold';>Sport</span>"; 
-            echo "<p>".$row['sport']."</p>";
+                    echo "<span style='font-weight:bold';>Segno zodiacale</span>"; 
+                    echo "<p>".$row['zodiaco']."</p>";
 
-            echo "<span style='font-weight:bold';>Carattere</span>"; 
-            echo "<p>".$row['carattere']."</p>";
+                    echo "<span style='font-weight:bold';>Sport</span>"; 
+                    echo "<p>".$row['sport']."</p>";
 
-            echo "<span style='font-weight:bold';>Colore di capelli</span>"; 
-            echo "<p>".$row['capelli']."</p>";
+                    echo "<span style='font-weight:bold';>Carattere</span>"; 
+                    echo "<p>".$row['carattere']."</p>";
 
-            echo "<span style='font-weight:bold';>Colore degli occhi</span>"; 
-            echo "<p>".$row['occhi']."</p>";
+                    echo "<span style='font-weight:bold';>Colore di capelli</span>"; 
+                    echo "<p>".$row['capelli']."</p>";
 
-            echo "<span style='font-weight:bold';>Altezza</span>"; 
-            echo "<p>".$row['altezza']."</p>";
+                    echo "<span style='font-weight:bold';>Colore degli occhi</span>"; 
+                    echo "<p>".$row['occhi']."</p>";
 
-            echo "<span style='font-weight:bold';>Stile</span>"; 
-            echo "<p>".$row['stile']."</p>";
+                    echo "<span style='font-weight:bold';>Altezza</span>"; 
+                    echo "<p>".$row['altezza']."</p>";
 
-                echo "<span style='font-weight:bold';>Sta cercando ?</span>"; 
-            echo "<p>".$row['relazione']."</p>";
+                    echo "<span style='font-weight:bold';>Stile</span>"; 
+                    echo "<p>".$row['stile']."</p>";
 
-                echo "<span style='font-weight:bold';>Esprime il suo interesse con...</span>"; 
-            echo "<p>".$row['esprimiAm']."</p>";
+                        echo "<span style='font-weight:bold';>Sta cercando ?</span>"; 
+                    echo "<p>".$row['relazione']."</p>";
 
-                echo "<span style='font-weight:bold';>Per approcciare...</span>"; 
-            echo "<p>".$row['sentire']."</p>";
+                        echo "<span style='font-weight:bold';>Esprime il suo interesse con...</span>"; 
+                    echo "<p>".$row['esprimiAm']."</p>";
 
-                echo "<span style='font-weight:bold';>Nel partner sta cercando...</span>"; 
-            echo "<p>".$row['caratterePartner']."</p>";
+                        echo "<span style='font-weight:bold';>Per approcciare...</span>"; 
+                    echo "<p>".$row['sentire']."</p>";
 
-                echo "<span style='font-weight:bold';>Nel tempo libero...</span>"; 
-            echo "<p>".$row['descrizione']."</p>";
+                        echo "<span style='font-weight:bold';>Nel partner sta cercando...</span>"; 
+                    echo "<p>".$row['caratterePartner']."</p>";
 
-                echo "<span style='font-weight:bold';>Si definisce</span>"; 
-            echo "<p>".$row['descrizionePersona']."</p>";
-            echo  "</div>";
-            echo "</div>";
+                        echo "<span style='font-weight:bold';>Nel tempo libero...</span>"; 
+                    echo "<p>".$row['descrizione']."</p>";
+
+                        echo "<span style='font-weight:bold';>Si definisce</span>"; 
+                    echo "<p>".$row['descrizionePersona']."</p>";
+                    echo  "</div>";
+                    echo "</div>";
 
 
-            echo "<div class='footer'>";
-            echo "<a href='./match.php'>Torna al match</a>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            
-                }
-            echo "</div>";
-            }
+                    echo "<div class='footer'>";
+                    echo "<a href='./match.php'>Torna al match</a>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                    
+                        }
+                    echo "</div>";
+                    }
 
-            ?>
-        </form>
-    </div>
+                ?>
+            </form>
+        </div>
 </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>

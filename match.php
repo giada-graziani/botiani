@@ -57,7 +57,6 @@
                     echo"<img src='./images/$row[foto]'>;";
                 }
                 ?>
-                <!---->
             </div>
             <div class="profilo" id="fotoProfilo">
                 <!-- Immagine del profilo con cui hai fatto match -->

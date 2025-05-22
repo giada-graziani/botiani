@@ -11,7 +11,6 @@
 </head>
 <body>
 <style>
-/* Stili per la navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -36,6 +35,22 @@
 
 .navbar-nav .nav-link:hover {
     color: #db687b !important;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+      body > form {
+        width: 95%;
+        margin: 30px 20px 30px 20px;
+    }
+   
+   h1 {
+        font-size: 2.5rem;
+    }
+
+    .navbar .d-flex {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 body > .container{
     background-color: rgba(248, 248, 248, 0.747);
@@ -126,40 +141,26 @@ a:hover {
     to { opacity: 1; transform: scale(1); }
 }
  
-/* Responsive */
-@media (max-width: 768px) {
-    body > form {
-        width: 95%;
-        margin: 30px 20px 30px 20px;
-    }
-   
-   h1 {
-        font-size: 2.5rem;
-    }
-   
-    
-}
 </style>
 <?php
     include("conn.php");
     session_start();
 ?>
-<!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
-             <img src="./images/png.png" alt="Logo" width="65" height="60" class="d-inline-block align-text-top">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./profiloUtente.php">Profilo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.php">Logout</a>
-                    </li>
-                </ul>
+            <img src="./images/png.png" alt="Logo" width="65" height="60" class="d-inline-block align-text-top">
+            <div id="navbarNav">
+                <div id="navbarNav" >
+                <div class="d-flex">
+                    <div class="nav-item me-3">
+                        <a class="nav-link" href="./profiloUtente.php"><button class="btn text-light rounded-2">Profilo</button></a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="./index.php"><button class="btn text-light rounded-2">Logout</button></a>
+                    </div>
             </div>
         </div>
-    </nav>
+</nav>
 <div class="container">
 
 <form> 

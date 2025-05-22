@@ -65,6 +65,8 @@ elseif($nomeFunzione=="prendiProfilo"){
                 foto f
             INNER JOIN utenti u
             ON u.id_utenti=f.id_utenti
+            INNER JOIN qualita q
+            ON q.id_utenti=u.id_utenti
             WHERE u.id_utenti<>'$idU' AND u.id_utenti NOT IN (
                                                         SELECT id_utenteMatch
                                                         FROM matchutenti mu
